@@ -1,0 +1,8 @@
+name: planet_phenology
+channels:
+  - defaults
+dependencies:
+  - python=3.11
+  - pandas
+  - requests
+prefix: C:\Users\reub0539\AppData\Local\miniconda3\envs\planet_phenology
