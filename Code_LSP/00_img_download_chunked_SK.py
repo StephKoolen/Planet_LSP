@@ -1,22 +1,19 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-PLANET_API_KEY = "PLAK145bb12f978a47be94c668cce23b6406"
 """
 PlanetScope downloader -- Option A: global dedup + local clipping.
 
-This revised version restores the full pipeline and changes Phase 3 so that:
-- the SR image is clipped,
-- the matching UDM2 image is clipped,
-- UDM2 band 1 is used to mask SR pixels to nodata (-9999),
-- only the final masked 4-band GeoTIFF is saved,
-- output files are named a[polygon_ID]_YYYYMMDD_HHMMSS.tif.
+This version is designed for low disk usage:
+- Phase 1 searches Planet per polygon and builds a global registry.
+- Phase 2 submits one order chunk at a time.
+- Each downloaded chunk is clipped immediately.
+- After clipping, the temporary downloaded chunk is deleted.
+- Final outputs are only the masked 4-band GeoTIFFs plus a CSV catalogue.
 
 Important differences from the previously uploaded version:
 1) main() is fully restored and actually orchestrates all phases.
-2) Phase 3 now prints diagnostics and raises if it creates zero tasks.
-3) Output is the final masked 4-band file only.
+2) Ordering, download, clipping, and cleanup now happen chunk-by-chunk.
+3) The temporary scene_pool is deleted as each chunk is processed.
 4) UDM2 band 1 controls masking; pixels where band 1 != 1 become -9999.
-5) The script reuses scene_pool and only recreates polygon outputs when needed.
+5) A CSV catalogue is written outside scene_pool for later QA/QC in R.
 
 Dependencies
 ------------
@@ -27,13 +24,14 @@ import os
 import sys
 import json
 import time
+import csv
+import shutil
 import logging
 import logging.handlers
 from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
-import csv
 import numpy as np
 import requests
 import geopandas as gpd
@@ -48,10 +46,11 @@ from urllib3.util.retry import Retry
 # USER SETTINGS
 # ------------------------------------------------------------------
 
-# PLANET_API_KEY = "your_API_key_here"
+PLANET_API_KEY = "PLAK145bb12f978a47be94c668cce23b6406"
 
 SHAPEFILE = r"C:/Users/reub0539/OneDrive - Nexus365/Dphil/Projects/Project3/NFI_50ha/wytham_bagley.shp"
 OUTPUT_DIR = r"C:/Users/reub0539/work/Planet_LSP/data/wytham_test"
+OUTPUT_METADATA_DIR = os.path.join(OUTPUT_DIR, "metadata")
 POLYGON_ID_FIELD = "forest"   # field in the shapefile that contains a unique name/ID for each polygon
 
 MIN_YEAR = 2025
@@ -67,11 +66,15 @@ BASE_URL = "https://api.planet.com/data/v1"
 QUICK_URL = f"{BASE_URL}/quick-search"
 ORDERS_URL = "https://api.planet.com/compute/ops/orders/v2"
 
+# Temporary scene pool is deleted after each chunk is processed.
+DELETE_SCENE_POOL_INPUTS = True
+
 # ------------------------------------------------------------------
 # LOGGING
 # ------------------------------------------------------------------
 
 os.makedirs(OUTPUT_DIR, exist_ok=True)
+os.makedirs(OUTPUT_METADATA_DIR, exist_ok=True)
 
 logging.basicConfig(
     level=logging.INFO,
@@ -153,11 +156,13 @@ def collect_features(sess: requests.Session, first_page: dict) -> list:
     features = []
     page = first_page
     while True:
-        features.extend(page["features"])
-        next_url = page["_links"].get("_next")
+        features.extend(page.get("features", []))
+        next_url = page.get("_links", {}).get("_next")
         if not next_url:
             break
-        page = sess.get(next_url).json()
+        r = sess.get(next_url)
+        r.raise_for_status()
+        page = r.json()
     return features
 
 
@@ -330,7 +335,8 @@ def build_global_registry(tasks: list) -> tuple[dict, dict]:
 
     def _search(args):
         name, coords = args
-        return name, search_polygon(build_session(), name, coords)
+        with build_session() as sess_local:
+            return name, search_polygon(sess_local, name, coords)
 
     with ThreadPoolExecutor(max_workers=MAX_SEARCH_WORKERS) as pool:
         futures = {pool.submit(_search, t): t[0] for t in tasks}
@@ -352,84 +358,8 @@ def build_global_registry(tasks: list) -> tuple[dict, dict]:
     return scene_registry, polygon_membership
 
 # ------------------------------------------------------------------
-# PHASE 2 -- ORDER + DOWNLOAD
+# PHASE 2 + 3 -- ORDER, DOWNLOAD, CLIP, CLEANUP
 # ------------------------------------------------------------------
-
-def run_global_orders(
-    sess: requests.Session,
-    scene_registry: dict,
-    polygon_membership: dict,
-    pool_dir: str,
-) -> None:
-    """Chunk unique scene IDs, submit orders, and download the delivered files."""
-    metadata_dir = os.path.join(pool_dir, "metadata")
-    os.makedirs(metadata_dir, exist_ok=True)
-
-    with open(os.path.join(metadata_dir, "scene_registry.json"), "w", encoding="utf-8") as f:
-        json.dump(scene_registry, f, indent=2)
-    with open(os.path.join(metadata_dir, "polygon_membership.json"), "w", encoding="utf-8") as f:
-        json.dump(polygon_membership, f, indent=2)
-
-    by_year = defaultdict(list)
-    for sid, feat in scene_registry.items():
-        year = int(feat["properties"]["acquired"][:4])
-        by_year[year].append(sid)
-
-    for year, ids in sorted(by_year.items()):
-        log.info(f"Pool year {year}: {len(ids)} unique scenes to order")
-        chunks = chunk_list(ids, CHUNK_SIZE)
-
-        for chunk_num, chunk in enumerate(chunks, start=1):
-            completed_file = os.path.join(metadata_dir, f"order_result_{year}_chunk_{chunk_num}.json")
-            if os.path.exists(completed_file):
-                log.info(f"Year {year} chunk {chunk_num}: already completed, skipping")
-                continue
-
-            order_name = f"global_{year}_chunk_{chunk_num}"
-            order_request = {
-                "name": order_name,
-                "order_type": "partial",
-                "products": [
-                    {
-                        "item_ids": chunk,
-                        "item_type": "PSScene",
-                        "product_bundle": "analytic_sr_udm2",
-                    }
-                ],
-            }
-
-            with open(
-                os.path.join(metadata_dir, f"order_request_{year}_chunk_{chunk_num}.json"),
-                "w",
-                encoding="utf-8",
-            ) as f:
-                json.dump(order_request, f, indent=2)
-
-            order_url = submit_order(sess, order_request)
-            try:
-                response = wait_for_order(sess, order_url)
-            except TimeoutError as exc:
-                log.error(exc)
-                continue
-
-            with open(completed_file, "w", encoding="utf-8") as f:
-                json.dump(response, f, indent=2)
-
-            if response["state"] == "failed":
-                log.error(f"Order failed: {order_name}")
-                continue
-
-            data_dir = os.path.join(pool_dir, str(year), f"chunk_{chunk_num}", "data")
-            download_results(response["_links"]["results"], data_dir, sess)
-            log.info(f"Year {year} chunk {chunk_num}: download complete -> {data_dir}")
-
-# ------------------------------------------------------------------
-# PHASE 3 -- LOCAL CLIPPING + QUALITY MASKING
-# ------------------------------------------------------------------
-
-# Set to True if you want the source SR/UDM2 files removed from scene_pool
-# after the final clipped polygon outputs have been written for that scene.
-DELETE_SCENE_POOL_INPUTS = True
 
 
 def _timestamp_from_sr_name(sr_path: Path) -> str:
@@ -461,11 +391,26 @@ def clip_scene_pair_to_polygon(
     udm_path: Path,
     polygon_geom,
     out_path: str,
-) -> None:
-    """Clip SR + UDM2, mask SR pixels where UDM2 band 1 != 1, save final 4-band output."""
+) -> dict:
+    """
+    Clip SR + UDM2, mask SR pixels where UDM2 band 1 != 1, save final 4-band output.
+
+    Returns a dictionary of summary statistics computed on the valid (unmasked)
+    pixels in the final clipped SR image.
+    """
     if os.path.exists(out_path) and os.path.getsize(out_path) > 0:
         log.info(f"Skipping existing output: {out_path}")
-        return
+        # We do not recompute stats for pre-existing outputs here.
+        return {
+            "valid_pixel_count": None,
+            "mean_blue": None,
+            "mean_green": None,
+            "mean_red": None,
+            "mean_nir": None,
+            "blue_nir_ratio": None,
+            "ndvi_mean": None,
+            "ndvi_sd": None,
+        }
 
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
 
@@ -511,6 +456,32 @@ def clip_scene_pair_to_polygon(
         masked_sr = sr_clipped.astype(np.float32)
         masked_sr[:, ~clear_mask] = -9999
 
+        # Compute summary stats on valid pixels only.
+        valid = masked_sr[0] != -9999
+        valid_pixel_count = int(np.sum(valid))
+
+        if valid_pixel_count == 0:
+            mean_blue = mean_green = mean_red = mean_nir = None
+            blue_nir_ratio = None
+            ndvi_mean = None
+            ndvi_sd = None
+        else:
+            blue = masked_sr[0][valid]
+            green = masked_sr[1][valid]
+            red = masked_sr[2][valid]
+            nir = masked_sr[3][valid]
+
+            mean_blue = float(np.mean(blue))
+            mean_green = float(np.mean(green))
+            mean_red = float(np.mean(red))
+            mean_nir = float(np.mean(nir))
+
+            blue_nir_ratio = float(mean_blue / mean_nir) if mean_nir and mean_nir > 0 else None
+
+            ndvi = (nir - red) / (nir + red)
+            ndvi_mean = float(np.mean(ndvi))
+            ndvi_sd = float(np.std(ndvi))
+
         profile = sr_src.profile.copy()
         profile.update(
             count=masked_sr.shape[0],
@@ -528,37 +499,50 @@ def clip_scene_pair_to_polygon(
     if not os.path.exists(out_path) or os.path.getsize(out_path) == 0:
         raise RuntimeError(f"Clip wrote no file: {out_path}")
 
+    return {
+        "valid_pixel_count": valid_pixel_count,
+        "mean_blue": mean_blue,
+        "mean_green": mean_green,
+        "mean_red": mean_red,
+        "mean_nir": mean_nir,
+        "blue_nir_ratio": blue_nir_ratio,
+        "ndvi_mean": ndvi_mean,
+        "ndvi_sd": ndvi_sd,
+    }
 
-def clip_all_scenes(
-    pool_dir: str,
+def process_downloaded_chunk(
+    data_dir: str,
+    scene_ids: list,
+    scene_registry: dict,
     polygon_membership: dict,
     polygon_geometries: dict,
-    scene_registry: dict,
+    catalogue_rows: list,
 ) -> None:
-    """Find SR/UDM2 pairs in scene_pool, clip them, and write final masked outputs.
-
-    Also writes a CSV catalogue of the final outputs with acquisition and sensor
-    metadata so you can later test whether outliers cluster by satellite / sensor
-    / illumination conditions.
-
-    When DELETE_SCENE_POOL_INPUTS is True, the SR/UDM2 source files are deleted
-    immediately after that scene has been fully clipped for every polygon.
     """
-    pool_tifs = list(Path(pool_dir).rglob("*.tif"))
+    Clip all scenes in one downloaded chunk and collect catalogue rows.
 
-    log.info(f"Phase 3: found {len(pool_tifs)} tif files under {pool_dir}")
-    for p in pool_tifs[:10]:
-        log.info(f"Pool file example: {p.name}")
+    For each final output, this records:
+    - polygon and scene IDs
+    - source filenames
+    - acquisition / satellite metadata
+    - mean Blue, Green, Red, NIR
+    - Blue/NIR ratio
+    - mean NDVI and NDVI SD
+    - valid pixel count
+    """
+    pool_tifs = list(Path(data_dir).rglob("*.tif"))
+
+    log.info(f"Chunk clip: found {len(pool_tifs)} tif files under {data_dir}")
+    for p in pool_tifs[:8]:
+        log.info(f"Chunk file example: {p.name}")
 
     if not pool_tifs:
-        raise RuntimeError(f"No .tif files found under {pool_dir}.")
+        raise RuntimeError(f"No .tif files found under {data_dir}.")
 
-    # Build tasks grouped by scene so we can safely delete the source scene
-    # once all polygons for that scene have been clipped.
-    scene_tasks = defaultdict(list)
-    catalogue_rows = []
+    clip_tasks = []
 
-    for scene_id, poly_names in polygon_membership.items():
+    for scene_id in scene_ids:
+        poly_names = polygon_membership.get(scene_id, [])
         log.info(f"Trying scene_id: {scene_id} -> polygons: {poly_names}")
 
         sr_files = [
@@ -582,11 +566,10 @@ def clip_all_scenes(
         sr_path = sr_files[0]
         udm_path = udm_files[0]
         stamp = _timestamp_from_sr_name(sr_path)
+        props = scene_registry.get(scene_id, {}).get("properties", {})
 
         log.info(f"Using SR:  {sr_path.name}")
         log.info(f"Using UDM: {udm_path.name}")
-
-        props = scene_registry.get(scene_id, {}).get("properties", {})
 
         for poly_name in poly_names:
             geom = polygon_geometries.get(poly_name)
@@ -600,99 +583,107 @@ def clip_all_scenes(
                 f"a{poly_name}_{stamp}.tif",
             )
 
-            # Record catalogue row for every intended final output.
-            catalogue_rows.append(
+            clip_tasks.append(
                 {
-                    "polygon_id": poly_name,
                     "scene_id": scene_id,
-                    "output_file": out_path,
-                    "source_sr_file": sr_path.name,
-                    "source_udm_file": udm_path.name,
-                    "acquired": props.get("acquired", ""),
-                    "timestamp_yyyymmdd_hhmmss": stamp,
-                    "satellite_id": props.get("satellite_id", ""),
-                    "instrument": props.get("instrument", ""),
-                    "quality_category": props.get("quality_category", ""),
-                    "cloud_cover": props.get("cloud_cover", ""),
-                    "clear_percent": props.get("clear_percent", ""),
-                    "cloud_percent": props.get("cloud_percent", ""),
-                    "shadow_percent": props.get("shadow_percent", ""),
-                    "snow_ice_percent": props.get("snow_ice_percent", ""),
-                    "view_angle": props.get("view_angle", ""),
-                    "sun_elevation": props.get("sun_elevation", ""),
-                    "sun_azimuth": props.get("sun_azimuth", ""),
-                    "row_exists_before_run": os.path.exists(out_path) and os.path.getsize(out_path) > 0,
+                    "polygon_id": poly_name,
+                    "sr_path": sr_path,
+                    "udm_path": udm_path,
+                    "geom": geom,
+                    "out_path": out_path,
+                    "props": props,
+                    "stamp": stamp,
                 }
             )
 
-            if os.path.exists(out_path) and os.path.getsize(out_path) > 0:
-                log.info(f"Already exists, skipping: {out_path}")
-                continue
+    log.info(f"Chunk clip: built {len(clip_tasks)} tasks")
 
-            scene_tasks[scene_id].append((sr_path, udm_path, geom, out_path))
+    if not clip_tasks:
+        raise RuntimeError(
+            "No clip tasks were created for this chunk. "
+            "This usually means the scene IDs do not match the downloaded filenames."
+        )
 
-    total_tasks = sum(len(v) for v in scene_tasks.values())
-    log.info(f"Clip phase: built {total_tasks} tasks across {len(scene_tasks)} scenes")
+    def _clip(task):
+        log.info(f"Clipping -> {task['out_path']}")
+        stats = clip_scene_pair_to_polygon(
+            task["sr_path"],
+            task["udm_path"],
+            task["geom"],
+            task["out_path"],
+        )
 
-    if total_tasks == 0:
-        log.warning("No new clip tasks were created. Existing outputs may already cover everything.")
-    else:
-        for scene_id, tasks in scene_tasks.items():
-            log.info(f"Processing scene {scene_id} with {len(tasks)} polygon clips")
+        row = {
+            "polygon_id": task["polygon_id"],
+            "scene_id": task["scene_id"],
+            "output_file": task["out_path"],
+            "source_sr_file": task["sr_path"].name,
+            "source_udm_file": task["udm_path"].name,
+            "acquired": task["props"].get("acquired", ""),
+            "timestamp_yyyymmdd_hhmmss": task["stamp"],
+            "satellite_id": task["props"].get("satellite_id", ""),
+            "instrument": task["props"].get("instrument", ""),
+            "quality_category": task["props"].get("quality_category", ""),
+            "cloud_cover": task["props"].get("cloud_cover", ""),
+            "clear_percent": task["props"].get("clear_percent", ""),
+            "cloud_percent": task["props"].get("cloud_percent", ""),
+            "shadow_percent": task["props"].get("shadow_percent", ""),
+            "snow_ice_percent": task["props"].get("snow_ice_percent", ""),
+            "view_angle": task["props"].get("view_angle", ""),
+            "sun_elevation": task["props"].get("sun_elevation", ""),
+            "sun_azimuth": task["props"].get("sun_azimuth", ""),
+            "row_exists_before_run": False,
+            "valid_pixel_count": stats["valid_pixel_count"],
+            "mean_blue": stats["mean_blue"],
+            "mean_green": stats["mean_green"],
+            "mean_red": stats["mean_red"],
+            "mean_nir": stats["mean_nir"],
+            "blue_nir_ratio": stats["blue_nir_ratio"],
+            "ndvi_mean": stats["ndvi_mean"],
+            "ndvi_sd": stats["ndvi_sd"],
+        }
+        return row
 
-            def _clip(task):
-                sr_path, udm_path, geom, out_path = task
-                log.info(f"Clipping -> {out_path}")
-                clip_scene_pair_to_polygon(sr_path, udm_path, geom, out_path)
+    rows = []
+    with ThreadPoolExecutor(max_workers=MAX_CLIP_WORKERS) as pool:
+        futures = [pool.submit(_clip, task) for task in clip_tasks]
+        for future in futures:
+            rows.append(future.result())
 
-            with ThreadPoolExecutor(max_workers=MAX_CLIP_WORKERS) as pool:
-                futures = [pool.submit(_clip, task) for task in tasks]
-                for future in futures:
-                    future.result()
+    catalogue_rows.extend(rows)
+    log.info("Chunk clipping complete")
 
-            if DELETE_SCENE_POOL_INPUTS:
-                sr_path = tasks[0][0]
-                udm_path = tasks[0][1]
-
-                for src in (sr_path, udm_path):
-                    try:
-                        if src.exists():
-                            src.unlink()
-                            log.info(f"Deleted scene-pool source: {src}")
-                    except Exception as exc:
-                        log.warning(f"Could not delete {src}: {exc}")
-
-                _delete_empty_parent_dirs(sr_path, Path(pool_dir))
-                _delete_empty_parent_dirs(udm_path, Path(pool_dir))
-
-        log.info("Clip phase complete")
-
-    # Write the metadata catalogue after the clipping step so you can inspect
-    # sensor/satellite effects in R even when some outputs already existed.
-    metadata_dir = os.path.join(OUTPUT_DIR, "metadata")
-    os.makedirs(metadata_dir, exist_ok=True)
-    catalogue_path = os.path.join(metadata_dir, "clipped_scene_catalogue.csv")
-
+def write_catalogue(catalogue_rows: list) -> None:
+    """Write the metadata catalogue outside scene_pool."""
+    catalogue_path = os.path.join(OUTPUT_METADATA_DIR, "clipped_scene_catalogue.csv")
     fieldnames = [
-        "polygon_id",
-        "scene_id",
-        "output_file",
-        "source_sr_file",
-        "source_udm_file",
-        "acquired",
-        "timestamp_yyyymmdd_hhmmss",
-        "satellite_id",
-        "instrument",
-        "quality_category",
-        "cloud_cover",
-        "clear_percent",
-        "cloud_percent",
-        "shadow_percent",
-        "snow_ice_percent",
-        "view_angle",
-        "sun_elevation",
-        "sun_azimuth",
-        "row_exists_before_run",
+    "polygon_id",
+    "scene_id",
+    "output_file",
+    "source_sr_file",
+    "source_udm_file",
+    "acquired",
+    "timestamp_yyyymmdd_hhmmss",
+    "satellite_id",
+    "instrument",
+    "quality_category",
+    "cloud_cover",
+    "clear_percent",
+    "cloud_percent",
+    "shadow_percent",
+    "snow_ice_percent",
+    "view_angle",
+    "sun_elevation",
+    "sun_azimuth",
+    "row_exists_before_run",
+    "valid_pixel_count",
+    "mean_blue",
+    "mean_green",
+    "mean_red",
+    "mean_nir",
+    "blue_nir_ratio",
+    "ndvi_mean",
+    "ndvi_sd",
     ]
 
     with open(catalogue_path, "w", newline="", encoding="utf-8") as f:
@@ -702,17 +693,96 @@ def clip_all_scenes(
 
     log.info(f"Wrote output catalogue -> {catalogue_path}")
 
+
+def run_global_orders_and_clip(
+    sess: requests.Session,
+    scene_registry: dict,
+    polygon_membership: dict,
+    polygon_geometries: dict,
+    pool_dir: str,
+    catalogue_rows: list,
+) -> None:
+    """Order one chunk at a time, clip immediately, then delete the temporary chunk."""
+    by_year = defaultdict(list)
+    for sid, feat in scene_registry.items():
+        year = int(feat["properties"]["acquired"][:4])
+        by_year[year].append(sid)
+
+    for year, ids in sorted(by_year.items()):
+        log.info(f"Pool year {year}: {len(ids)} unique scenes to order")
+        chunks = chunk_list(ids, CHUNK_SIZE)
+
+        for chunk_num, chunk in enumerate(chunks, start=1):
+            log.info(f"Year {year} chunk {chunk_num}: preparing order for {len(chunk)} scenes")
+            order_name = f"global_{year}_chunk_{chunk_num}"
+            order_request = {
+                "name": order_name,
+                "order_type": "partial",
+                "products": [
+                    {
+                        "item_ids": chunk,
+                        "item_type": "PSScene",
+                        "product_bundle": "analytic_sr_udm2",
+                    }
+                ],
+            }
+
+            order_url = submit_order(sess, order_request)
+            try:
+                response = wait_for_order(sess, order_url)
+            except TimeoutError as exc:
+                log.error(exc)
+                continue
+
+            if response.get("state") == "failed":
+                log.error(f"Order failed: {order_name}")
+                continue
+
+            data_dir = os.path.join(pool_dir, str(year), f"chunk_{chunk_num}", "data")
+            download_results(response["_links"]["results"], data_dir, sess)
+            log.info(f"Year {year} chunk {chunk_num}: download complete -> {data_dir}")
+
+            # Clip immediately from this chunk, then delete the temporary download.
+            process_downloaded_chunk(
+                data_dir=data_dir,
+                scene_ids=chunk,
+                scene_registry=scene_registry,
+                polygon_membership=polygon_membership,
+                polygon_geometries=polygon_geometries,
+                catalogue_rows=catalogue_rows,
+            )
+
+            if DELETE_SCENE_POOL_INPUTS:
+                chunk_root = Path(data_dir).parent
+                try:
+                    shutil.rmtree(chunk_root, ignore_errors=True)
+                    log.info(f"Deleted temporary chunk directory: {chunk_root}")
+                except Exception as exc:
+                    log.warning(f"Could not delete chunk directory {chunk_root}: {exc}")
+
+                _delete_empty_parent_dirs(chunk_root, Path(pool_dir))
+
+    # Final cleanup of the temporary scene_pool root if it is now empty.
+    pool_root = Path(pool_dir)
+    if pool_root.exists():
+        try:
+            pool_root.rmdir()
+            log.info(f"Deleted empty scene_pool root: {pool_root}")
+        except OSError:
+            log.info(f"scene_pool root not empty after cleanup: {pool_root}")
+
 # ------------------------------------------------------------------
 # ENTRY POINT
 # ------------------------------------------------------------------
 
 def main() -> None:
-    """Orchestrate all three phases."""
+    """Orchestrate all phases."""
     sess = build_session()
     pool_dir = os.path.join(OUTPUT_DIR, "scene_pool")
 
     log.info(f"Using output directory: {OUTPUT_DIR}")
-    log.info(f"Using pool directory: {pool_dir}")
+    log.info(f"Using metadata directory: {OUTPUT_METADATA_DIR}")
+    log.info(f"Using temporary pool directory: {pool_dir}")
 
     # ----------------------------------------------------------------
     # Load shapefile
@@ -771,11 +841,11 @@ def main() -> None:
     # ----------------------------------------------------------------
     # Phase 1 -- Search (resume: reload from disk if already done)
     # ----------------------------------------------------------------
-    registry_path = os.path.join(pool_dir, "metadata", "scene_registry.json")
-    membership_path = os.path.join(pool_dir, "metadata", "polygon_membership.json")
+    registry_path = os.path.join(OUTPUT_METADATA_DIR, "scene_registry.json")
+    membership_path = os.path.join(OUTPUT_METADATA_DIR, "polygon_membership.json")
 
     if os.path.exists(registry_path) and os.path.exists(membership_path):
-        log.info("Phase 1: loading existing registry from disk (delete to re-search)")
+        log.info("Phase 1: loading existing registry from disk (delete files to re-search)")
         with open(registry_path, encoding="utf-8") as f:
             scene_registry = json.load(f)
         with open(membership_path, encoding="utf-8") as f:
@@ -783,19 +853,26 @@ def main() -> None:
     else:
         log.info("Phase 1: searching Planet API for all polygons")
         scene_registry, polygon_membership = build_global_registry(search_tasks)
+        with open(registry_path, "w", encoding="utf-8") as f:
+            json.dump(scene_registry, f, indent=2)
+        with open(membership_path, "w", encoding="utf-8") as f:
+            json.dump(polygon_membership, f, indent=2)
 
     # ----------------------------------------------------------------
-    # Phase 2 -- Order + download
+    # Phase 2 + 3 -- Order chunk-by-chunk, clip immediately, cleanup
     # ----------------------------------------------------------------
-    log.info("Phase 2: submitting global orders and downloading scene pool")
-    run_global_orders(sess, scene_registry, polygon_membership, pool_dir)
+    catalogue_rows = []
+    log.info("Submitting orders one chunk at a time and clipping immediately")
+    run_global_orders_and_clip(
+        sess=sess,
+        scene_registry=scene_registry,
+        polygon_membership=polygon_membership,
+        polygon_geometries=polygon_geometries,
+        pool_dir=pool_dir,
+        catalogue_rows=catalogue_rows,
+    )
 
-    # ----------------------------------------------------------------
-    # Phase 3 -- Local clipping + quality masking
-    # ----------------------------------------------------------------
-    log.info("Phase 3: clipping pool scenes to per-polygon outputs")
-    clip_all_scenes(pool_dir, polygon_membership, polygon_geometries, scene_registry)
-
+    write_catalogue(catalogue_rows)
     log.info("All phases complete")
 
 
