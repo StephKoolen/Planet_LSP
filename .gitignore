@@ -3,5 +3,8 @@
 .RData
 .Ruserdata
 
-#also ignore .tif files
+#also ignore .tif files and other adjacent files used when downloading the data 
+
 *.tif
+*.tif.aux.xml
+
