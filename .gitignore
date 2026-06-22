@@ -7,4 +7,9 @@
 
 *.tif
 *.tif.aux.xml
+*.xml
+*.json
+
+#Inore all the recovered dowlonaded files
+data/recovered_downloads
 

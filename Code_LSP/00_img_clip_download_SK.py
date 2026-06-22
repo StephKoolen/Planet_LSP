@@ -9,11 +9,12 @@ Phase 1  SEARCH
     - Build a reverse lookup:        scene_id -> [polygon names]
 
 Phase 2  ORDER + DOWNLOAD
-    - Bucket deduplicated scene IDs by year
+    - Bucket deduplicated scene IDs by year (strict — no chunk ever spans two years)
     - Sort scene IDs within each year for deterministic chunking
     - Build one AOI per chunk from all polygons touched by the scenes in it
     - Submit Planet orders with the clip tool
-    - Download the clipped chunk outputs
+    - Download the clipped chunk outputs into per-year folders:
+        <OUTPUT_DIR>/<polygon_name>/downloaded/<year>/chunk_<N>/
 
 Phase 3  LOCAL POLYGON CLIP
     - For each clipped chunk, clip each scene to the individual polygons it intersects
@@ -32,7 +33,7 @@ Dependencies
     pip install requests geopandas shapely rasterio pyproj numpy
 """
 
-from __future__ import annotations
+
 
 import csv
 import json
@@ -44,6 +45,8 @@ import sys
 import time
 from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor, as_completed
+#from __future__ import annotations
+from itertools import groupby
 from pathlib import Path
 
 import geopandas as gpd
@@ -62,26 +65,24 @@ from urllib3.util.retry import Retry
 # USER SETTINGS
 # ------------------------------------------------------------------
 
-PLANET_API_KEY = "PLAK145bb12f978a47be94c668cce23b6406"
-
-SHAPEFILE = r"C:/Users/reub0539/OneDrive - Nexus365/Dphil/Projects/Project3/NFI_50ha/simplified_bagley_wytham.shp"
-OUTPUT_DIR = r"C:/Users/reub0539/work/Planet_LSP/data/wytham_test"
+SHAPEFILE        = r"C:/Users/reub0539/OneDrive - Nexus365/Dphil/Projects/Project3/simplified_wytham.shp"
+OUTPUT_DIR       = r"C:/Users/reub0539/work/Planet_LSP/data/wytham_test"
 POLYGON_ID_FIELD = "forest"
 
-MIN_YEAR = 2024
-MAX_YEAR = 2024
+MIN_YEAR = 2018
+MAX_YEAR = 2025
 
-MAX_CLOUD_COVER = 0.4
-CHUNK_SIZE = 400
-MAX_SEARCH_WORKERS = 8
-MAX_DOWNLOAD_WORKERS = 12
-MAX_CLIP_WORKERS = 8
+MAX_CLOUD_COVER       = 0.5
+CHUNK_SIZE            = 400
+MAX_SEARCH_WORKERS    = 8
+MAX_DOWNLOAD_WORKERS  = 12
+MAX_CLIP_WORKERS      = 8
 ORDER_TIMEOUT_MINUTES = 120
 
-DELETE_TEMP_DOWNLOADS = True
+DELETE_TEMP_DOWNLOADS = False
 
-BASE_URL = "https://api.planet.com/data/v1"
-QUICK_URL = f"{BASE_URL}/quick-search"
+BASE_URL   = "https://api.planet.com/data/v1"
+QUICK_URL  = f"{BASE_URL}/quick-search"
 ORDERS_URL = "https://api.planet.com/compute/ops/orders/v2"
 
 os.makedirs(OUTPUT_DIR, exist_ok=True)
@@ -104,6 +105,7 @@ logging.basicConfig(
 )
 log = logging.getLogger(__name__)
 
+
 # ------------------------------------------------------------------
 # SESSION
 # ------------------------------------------------------------------
@@ -120,6 +122,7 @@ def build_session() -> requests.Session:
     sess.mount("https://", HTTPAdapter(max_retries=retry))
     sess.auth = (PLANET_API_KEY, "")
     return sess
+
 
 # ------------------------------------------------------------------
 # HELPERS
@@ -139,7 +142,7 @@ def create_filter(coords: list) -> dict:
                 "field_name": "acquired",
                 "config": {
                     "gte": f"{MIN_YEAR}-01-01T00:00:00.000Z",
-                    "lt": f"{MAX_YEAR + 1}-01-01T00:00:00.000Z",
+                    "lt":  f"{MAX_YEAR + 1}-01-01T00:00:00.000Z",
                 },
             },
             {
@@ -174,10 +177,10 @@ def collect_features(sess: requests.Session, first_page: dict) -> list:
 
 def is_spring(acquired: str) -> bool:
     month = int(acquired[5:7])
-    return 3 <= month <= 3
+    return 3 <= month <= 6
 
 def safe_coords(geom) -> list:
-    geom = orient(geom, sign=1.0)
+    geom   = orient(geom, sign=1.0)
     coords = mapping(geom)["coordinates"]
     coords = [[(v[0], v[1]) for v in ring] for ring in coords]
     lon, lat = coords[0][0][0], coords[0][0][1]
@@ -190,23 +193,32 @@ def chunk_list(items: list, size: int) -> list:
 
 def submit_order(sess: requests.Session, order_request: dict) -> str:
     r = sess.post(ORDERS_URL, json=order_request)
-    if r.status_code == 400:
-        log.error("Order 400 Bad Request. API response: %s", r.text)
+
+    if r.status_code >= 400:
+        log.error("Order failed with %s", r.status_code)
+        log.error("Response text: %s", r.text)
         log.error("Request sent: %s", json.dumps(order_request, indent=2))
+
     r.raise_for_status()
     order_id = r.json()["id"]
     order_url = f"{ORDERS_URL}/{order_id}"
     log.info("Order submitted: %s", order_url)
     return order_url
 
-def wait_for_order(sess: requests.Session, order_url: str, timeout_minutes: int = ORDER_TIMEOUT_MINUTES) -> dict:
+def wait_for_order(
+    sess: requests.Session,
+    order_url: str,
+    timeout_minutes: int = ORDER_TIMEOUT_MINUTES,
+) -> dict:
     deadline = time.monotonic() + timeout_minutes * 60
     while True:
         if time.monotonic() > deadline:
-            raise TimeoutError(f"Order did not complete within {timeout_minutes} min: {order_url}")
-        r = sess.get(order_url)
+            raise TimeoutError(
+                f"Order did not complete within {timeout_minutes} min: {order_url}"
+            )
+        r     = sess.get(order_url)
         r.raise_for_status()
-        data = r.json()
+        data  = r.json()
         state = data.get("state")
         log.info("Order state: %s (%s)", state, order_url)
         if state in {"success", "failed", "partial"}:
@@ -217,7 +229,7 @@ def download_file(url: str, outfile: str, sess: requests.Session) -> None:
     if os.path.exists(outfile) and os.path.getsize(outfile) > 0:
         return
     os.makedirs(os.path.dirname(outfile), exist_ok=True)
-    r = sess.get(url, stream=True)
+    r   = sess.get(url, stream=True)
     r.raise_for_status()
     tmp = outfile + ".part"
     with open(tmp, "wb") as f:
@@ -244,9 +256,13 @@ def download_results(results: list, outdir: str, sess: requests.Session) -> list
         for future in futures:
             future.result()
 
-    downloaded = [path for _, path in tasks if os.path.exists(path) and os.path.getsize(path) > 0]
+    downloaded = [
+        path for _, path in tasks
+        if os.path.exists(path) and os.path.getsize(path) > 0
+    ]
     log.info("Downloaded %d/%d files -> %s", len(downloaded), len(tasks), outdir)
     return downloaded
+
 
 # ------------------------------------------------------------------
 # PHASE 1 -- SEARCH
@@ -265,14 +281,17 @@ def search_polygon(sess: requests.Session, polygon_name: str, coords: list) -> l
         )
     resp.raise_for_status()
 
-    all_features = collect_features(sess, resp.json())
+    all_features    = collect_features(sess, resp.json())
     spring_features = [
         f for f in all_features
         if is_spring(f["properties"]["acquired"])
         and MIN_YEAR <= int(f["properties"]["acquired"][:4]) <= MAX_YEAR
     ]
 
-    log.info("%s: %d scenes found, %d pass Mar-Jun filter", polygon_name, len(all_features), len(spring_features))
+    log.info(
+        "%s: %d scenes found, %d pass Mar-Jun filter",
+        polygon_name, len(all_features), len(spring_features),
+    )
     return spring_features
 
 def build_polygon_registry(tasks: list) -> tuple[dict, dict]:
@@ -281,7 +300,7 @@ def build_polygon_registry(tasks: list) -> tuple[dict, dict]:
       scene_registry     : scene_id -> feature
       polygon_membership : polygon_name -> [scene_id]
     """
-    scene_registry = {}
+    scene_registry     = {}
     polygon_membership = defaultdict(list)
 
     def _search(args):
@@ -297,31 +316,50 @@ def build_polygon_registry(tasks: list) -> tuple[dict, dict]:
                 name, features = future.result()
                 for feat in features:
                     sid = feat["id"]
-                    scene_registry[sid] = feat
+                    scene_registry[sid]  = feat
                     polygon_membership[name].append(sid)
             except Exception as exc:
                 log.error("Search failed for %s: %s", poly_name, exc, exc_info=True)
 
-    # Deduplicate scene IDs within each polygon and sort for deterministic chunking.
+    # Deduplicate scene IDs within each polygon; sorting is done per-year below.
     for poly_name in list(polygon_membership.keys()):
         polygon_membership[poly_name] = sorted(set(polygon_membership[poly_name]))
 
-    log.info("Built registry with %d unique scenes across %d polygons", len(scene_registry), len(polygon_membership))
+    log.info(
+        "Built registry with %d unique scenes across %d polygons",
+        len(scene_registry), len(polygon_membership),
+    )
     return scene_registry, polygon_membership
 
+
 # ------------------------------------------------------------------
-# PHASE 2 -- ORDER PER POLYGON
+# PHASE 2 -- ORDER PER POLYGON, BUCKETED BY YEAR
 # ------------------------------------------------------------------
 
 def polygon_clip_aoi(coords: list) -> dict:
+    """Use the polygon's own geometry as the AOI for the Planet clip tool."""
+    return {"type": "Polygon", "coordinates": coords}
+
+
+def bucket_scenes_by_year(scene_ids: list, scene_registry: dict) -> dict[str, list[str]]:
     """
-    Use the polygon's own geometry as the AOI for the clip tool.
-    This avoids unioning many polygons into one AOI.
+    Group a list of scene IDs by their acquisition year.
+
+    Returns a dict mapping year string -> sorted list of scene IDs.
+    Scenes are sorted within each year for deterministic chunking.
+    This guarantees that no chunk ever straddles two calendar years,
+    so each chunk's download folder can be unambiguously named by year.
     """
-    return {
-        "type": "Polygon",
-        "coordinates": coords,
-    }
+    buckets: dict[str, list[str]] = defaultdict(list)
+    for sid in scene_ids:
+        # Acquisition timestamp format: "2023-04-15T10:22:00.000Z"
+        # Slice [:4] gives the four-digit year string.
+        year = scene_registry[sid]["properties"]["acquired"][:4]
+        buckets[year].append(sid)
+
+    # Sort scene IDs within each year for deterministic, reproducible chunking.
+    return {year: sorted(sids) for year, sids in sorted(buckets.items())}
+
 
 def run_orders_per_polygon(
     sess: requests.Session,
@@ -329,59 +367,103 @@ def run_orders_per_polygon(
     polygon_membership: dict,
     polygon_geometries: dict,
 ) -> None:
+    """
+    For each polygon:
+      1. Bucket its scene IDs by year (strict — no chunk spans two years).
+      2. Split each year's scenes into chunks of at most CHUNK_SIZE.
+      3. Submit one Planet order per chunk, clipped to the polygon's AOI.
+      4. Download results into:
+             <OUTPUT_DIR>/<polygon_name>/downloaded/<year>/chunk_<N>/
+
+    Output structure example:
+        wytham/
+        └── downloaded/
+            ├── 2019/
+            │   ├── chunk_1/
+            │   └── chunk_2/
+            ├── 2020/
+            │   └── chunk_1/
+            └── 2023/
+                └── chunk_1/
+    """
     metadata_dir = os.path.join(OUTPUT_DIR, "metadata")
     os.makedirs(metadata_dir, exist_ok=True)
 
+    # Persist registry and membership for debugging / resuming.
     with open(os.path.join(metadata_dir, "scene_registry.json"), "w", encoding="utf-8") as f:
         json.dump(scene_registry, f, indent=2)
-
     with open(os.path.join(metadata_dir, "polygon_membership.json"), "w", encoding="utf-8") as f:
         json.dump(polygon_membership, f, indent=2)
 
     for poly_name, scene_ids in polygon_membership.items():
+
         geom = polygon_geometries.get(poly_name)
         if geom is None:
             log.warning("Skipping polygon %s because geometry is missing", poly_name)
             continue
 
         coords = safe_coords(geom)
-        aoi = polygon_clip_aoi(coords)
+        aoi    = polygon_clip_aoi(coords)
 
-        # Deterministic chunking per polygon.
-        scene_ids = sorted(scene_ids)
-        chunks = chunk_list(scene_ids, CHUNK_SIZE)
-        log.info("Polygon %s: %d scenes -> %d chunks", poly_name, len(scene_ids), len(chunks))
+        # ── Bucket scenes by year ────────────────────────────────────────────
+        # Each year gets its own set of chunks so downloads are always
+        # organised into per-year folders with no ambiguity.
+        year_buckets = bucket_scenes_by_year(scene_ids, scene_registry)
 
-        for chunk_num, chunk in enumerate(chunks, start=1):
-            order_name = f"{poly_name}_chunk_{chunk_num}"
-            order_request = {
-                "name": order_name,
-                "order_type": "partial",
-                "products": [
-                    {
-                        "item_ids": chunk,
-                        "item_type": "PSScene",
-                        "product_bundle": "analytic_sr_udm2",
-                    }
-                ],
-                "tools": [
-                    {
-                        "clip": {
-                            "aoi": aoi,
+        total_scenes = sum(len(v) for v in year_buckets.values())
+        log.info(
+            "Polygon %s: %d scenes across %d years",
+            poly_name, total_scenes, len(year_buckets),
+        )
+
+        # ── Process each year independently ──────────────────────────────────
+        for year, year_scene_ids in year_buckets.items():
+
+            chunks = chunk_list(year_scene_ids, CHUNK_SIZE)
+            log.info(
+                "  %s | year %s: %d scenes -> %d chunk(s)",
+                poly_name, year, len(year_scene_ids), len(chunks),
+            )
+
+            for chunk_num, chunk in enumerate(chunks, start=1):
+
+                order_name = f"{poly_name}_{year}_chunk_{chunk_num}"
+                order_request = {
+                    "name": order_name,
+                    "source_type": "scenes",
+                    "order_type": "partial",
+                    "products": [
+                        {
+                            "item_ids": chunk,
+                            "item_type": "PSScene",
+                            "product_bundle": "analytic_sr_udm2,analytic_udm2",
                         }
-                    }
-                ],
-            }
+                    ],
+                    "tools": [
+                        {"clip": {"aoi": aoi}}
+                    ],
+                }
 
-            order_url = submit_order(sess, order_request)
-            response = wait_for_order(sess, order_url)
+                order_url = submit_order(sess, order_request)
+                response  = wait_for_order(sess, order_url)
 
-            if response.get("state") == "failed":
-                log.error("Order failed for %s chunk %s", poly_name, chunk_num)
-                continue
+                if response.get("state") == "failed":
+                    log.error(
+                        "Order failed for %s year %s chunk %d",
+                        poly_name, year, chunk_num,
+                    )
+                    continue
 
-            outdir = os.path.join(OUTPUT_DIR, poly_name, "downloaded", f"chunk_{chunk_num}")
-            download_results(response["_links"]["results"], outdir, sess)
+                # Download into  <poly>/downloaded/<year>/chunk_<N>/
+                outdir = os.path.join(
+                    OUTPUT_DIR, poly_name, "downloaded", year, f"chunk_{chunk_num}"
+                )
+                download_results(response["_links"]["results"], outdir, sess)
+
+                if DELETE_TEMP_DOWNLOADS:
+                    shutil.rmtree(outdir, ignore_errors=True)
+                    log.info("Deleted temp download dir: %s", outdir)
+
 
 # ------------------------------------------------------------------
 # ENTRY POINT
@@ -403,11 +485,15 @@ def main() -> None:
             gdf.columns.tolist(),
         )
 
-    search_tasks = []
+    search_tasks       = []
     polygon_geometries = {}
 
     for idx, row in gdf.iterrows():
-        name = str(row[POLYGON_ID_FIELD]) if POLYGON_ID_FIELD in gdf.columns else f"polygon_{idx:04d}"
+        name = (
+            str(row[POLYGON_ID_FIELD])
+            if POLYGON_ID_FIELD in gdf.columns
+            else f"polygon_{idx:04d}"
+        )
         geom = row.geometry
 
         if geom.geom_type == "Polygon":
@@ -419,8 +505,12 @@ def main() -> None:
                 part_name = f"{name}_part{i}"
                 search_tasks.append((part_name, safe_coords(poly)))
                 polygon_geometries[part_name] = poly
+
         else:
-            log.warning("Skipping unsupported geometry type '%s' for %s", geom.geom_type, name)
+            log.warning(
+                "Skipping unsupported geometry type '%s' for %s",
+                geom.geom_type, name,
+            )
 
     log.info("Loaded %d polygon tasks from shapefile", len(search_tasks))
 
@@ -429,6 +519,7 @@ def main() -> None:
         run_orders_per_polygon(sess, scene_registry, polygon_membership, polygon_geometries)
 
     log.info("All phases complete")
+
 
 if __name__ == "__main__":
     try:

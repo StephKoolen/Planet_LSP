@@ -46515,3 +46515,2314 @@ Traceback (most recent call last):
   File "C:\Users\reub0539\AppData\Local\miniconda3\envs\scale_dependency\Lib\site-packages\requests\models.py", line 1028, in raise_for_status
     raise HTTPError(http_error_msg, response=self)
 requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://api.planet.com/compute/ops/orders/v2
+2026-06-18 14:37:19,670 | INFO | Loaded 2 polygon tasks from shapefile
+2026-06-18 14:37:25,292 | INFO | bagley: 1702 scenes found, 594 pass Mar-Jun filter
+2026-06-18 14:37:26,804 | INFO | wytham: 2175 scenes found, 738 pass Mar-Jun filter
+2026-06-18 14:37:26,810 | INFO | Built registry with 970 unique scenes across 2 polygons
+2026-06-18 14:37:27,010 | INFO | Polygon bagley: 594 scenes across 10 years
+2026-06-18 14:37:27,011 | INFO |   bagley | year 2016: 4 scenes -> 1 chunk(s)
+2026-06-18 14:37:27,681 | ERROR | Order 400 Bad Request. API response: {"field":null,"general":[{"message":"Order request resulted in no acceptable assets. Likely due to lack of permissions."}]}
+
+2026-06-18 14:37:27,685 | ERROR | Request sent: {
+  "name": "bagley_2016_chunk_1",
+  "order_type": "partial",
+  "products": [
+    {
+      "item_ids": [
+        "20160307_080216_0c47",
+        "20160419_144723_0c47",
+        "20160504_085050_0c53",
+        "20160504_085051_0c53"
+      ],
+      "item_type": "PSScene",
+      "product_bundle": "analytic_sr_udm2"
+    }
+  ],
+  "tools": [
+    {
+      "clip": {
+        "aoi": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -1.2756096486648303,
+                51.71227094299675
+              ],
+              [
+                -1.266665846397354,
+                51.71221544144996
+              ],
+              [
+                -1.2662923236096284,
+                51.71797661654677
+              ],
+              [
+                -1.275378074531166,
+                51.71835776716701
+              ],
+              [
+                -1.2756096486648303,
+                51.71227094299675
+              ]
+            ]
+          ]
+        }
+      }
+    }
+  ]
+}
+2026-06-18 14:37:27,687 | ERROR | Fatal error in main()
+Traceback (most recent call last):
+  File "C:\Users\reub0539\work\Planet_LSP\Code_LSP\00_img_clip_download_SK.py", line 528, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\reub0539\work\Planet_LSP\Code_LSP\00_img_clip_download_SK.py", line 521, in main
+    run_orders_per_polygon(sess, scene_registry, polygon_membership, polygon_geometries)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\reub0539\work\Planet_LSP\Code_LSP\00_img_clip_download_SK.py", line 449, in run_orders_per_polygon
+    order_url = submit_order(sess, order_request)
+  File "C:\Users\reub0539\work\Planet_LSP\Code_LSP\00_img_clip_download_SK.py", line 201, in submit_order
+    r.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\reub0539\AppData\Local\miniconda3\envs\scale_dependency\Lib\site-packages\requests\models.py", line 1028, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://api.planet.com/compute/ops/orders/v2
+2026-06-18 14:44:15,670 | INFO | Loaded 2 polygon tasks from shapefile
+2026-06-18 14:44:20,762 | INFO | bagley: 1702 scenes found, 594 pass Mar-Jun filter
+2026-06-18 14:44:21,482 | INFO | wytham: 2175 scenes found, 738 pass Mar-Jun filter
+2026-06-18 14:44:21,489 | INFO | Built registry with 970 unique scenes across 2 polygons
+2026-06-18 14:44:21,697 | INFO | Polygon bagley: 594 scenes across 10 years
+2026-06-18 14:44:21,697 | INFO |   bagley | year 2016: 4 scenes -> 1 chunk(s)
+2026-06-18 14:44:22,294 | ERROR | Order 400 Bad Request. API response: {"field":null,"general":[{"message":"Order request resulted in no acceptable assets. Likely due to lack of permissions."}]}
+
+2026-06-18 14:44:22,295 | ERROR | Request sent: {
+  "name": "bagley_2016_chunk_1",
+  "source_type": "scenes",
+  "order_type": "partial",
+  "products": [
+    {
+      "item_ids": [
+        "20160307_080216_0c47",
+        "20160419_144723_0c47",
+        "20160504_085050_0c53",
+        "20160504_085051_0c53"
+      ],
+      "item_type": "PSScene",
+      "product_bundle": "analytic_sr_udm2"
+    }
+  ],
+  "tools": [
+    {
+      "clip": {
+        "aoi": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -1.2756096486648303,
+                51.71227094299675
+              ],
+              [
+                -1.266665846397354,
+                51.71221544144996
+              ],
+              [
+                -1.2662923236096284,
+                51.71797661654677
+              ],
+              [
+                -1.275378074531166,
+                51.71835776716701
+              ],
+              [
+                -1.2756096486648303,
+                51.71227094299675
+              ]
+            ]
+          ]
+        }
+      }
+    }
+  ]
+}
+2026-06-18 14:44:22,295 | ERROR | Fatal error in main()
+Traceback (most recent call last):
+  File "C:\Users\reub0539\work\Planet_LSP\Code_LSP\00_img_clip_download_SK.py", line 525, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\reub0539\work\Planet_LSP\Code_LSP\00_img_clip_download_SK.py", line 518, in main
+    run_orders_per_polygon(sess, scene_registry, polygon_membership, polygon_geometries)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\reub0539\work\Planet_LSP\Code_LSP\00_img_clip_download_SK.py", line 446, in run_orders_per_polygon
+    order_url = submit_order(sess, order_request)
+  File "C:\Users\reub0539\work\Planet_LSP\Code_LSP\00_img_clip_download_SK.py", line 201, in submit_order
+    r.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\reub0539\AppData\Local\miniconda3\envs\scale_dependency\Lib\site-packages\requests\models.py", line 1028, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://api.planet.com/compute/ops/orders/v2
+2026-06-18 14:46:10,569 | INFO | Loaded 2 polygon tasks from shapefile
+2026-06-18 14:46:14,399 | INFO | bagley: 1702 scenes found, 594 pass Mar-Jun filter
+2026-06-18 14:46:15,352 | INFO | wytham: 2175 scenes found, 738 pass Mar-Jun filter
+2026-06-18 14:46:15,360 | INFO | Built registry with 970 unique scenes across 2 polygons
+2026-06-18 14:46:15,568 | INFO | Polygon bagley: 594 scenes across 10 years
+2026-06-18 14:46:15,569 | INFO |   bagley | year 2016: 4 scenes -> 1 chunk(s)
+2026-06-18 14:46:15,964 | ERROR | Order failed with 400
+2026-06-18 14:46:15,965 | ERROR | Response text: {"field":null,"general":[{"message":"Order request resulted in no acceptable assets. Likely due to lack of permissions."}]}
+
+2026-06-18 14:46:15,966 | ERROR | Request sent: {
+  "name": "bagley_2016_chunk_1",
+  "source_type": "scenes",
+  "order_type": "partial",
+  "products": [
+    {
+      "item_ids": [
+        "20160307_080216_0c47",
+        "20160419_144723_0c47",
+        "20160504_085050_0c53",
+        "20160504_085051_0c53"
+      ],
+      "item_type": "PSScene",
+      "product_bundle": "analytic_sr_udm2"
+    }
+  ],
+  "tools": [
+    {
+      "clip": {
+        "aoi": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -1.2756096486648303,
+                51.71227094299675
+              ],
+              [
+                -1.266665846397354,
+                51.71221544144996
+              ],
+              [
+                -1.2662923236096284,
+                51.71797661654677
+              ],
+              [
+                -1.275378074531166,
+                51.71835776716701
+              ],
+              [
+                -1.2756096486648303,
+                51.71227094299675
+              ]
+            ]
+          ]
+        }
+      }
+    }
+  ]
+}
+2026-06-18 14:46:15,968 | ERROR | Fatal error in main()
+Traceback (most recent call last):
+  File "C:\Users\reub0539\work\Planet_LSP\Code_LSP\00_img_clip_download_SK.py", line 528, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\reub0539\work\Planet_LSP\Code_LSP\00_img_clip_download_SK.py", line 521, in main
+    run_orders_per_polygon(sess, scene_registry, polygon_membership, polygon_geometries)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\reub0539\work\Planet_LSP\Code_LSP\00_img_clip_download_SK.py", line 449, in run_orders_per_polygon
+    order_url = submit_order(sess, order_request)
+  File "C:\Users\reub0539\work\Planet_LSP\Code_LSP\00_img_clip_download_SK.py", line 204, in submit_order
+    r.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\reub0539\AppData\Local\miniconda3\envs\scale_dependency\Lib\site-packages\requests\models.py", line 1028, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://api.planet.com/compute/ops/orders/v2
+2026-06-18 14:47:42,375 | ERROR | Fatal error in main()
+Traceback (most recent call last):
+  File "C:\Users\reub0539\work\Planet_LSP\Code_LSP\00_img_clip_download_SK.py", line 528, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\reub0539\work\Planet_LSP\Code_LSP\00_img_clip_download_SK.py", line 477, in main
+    raise ValueError("Shapefile has no CRS defined")
+ValueError: Shapefile has no CRS defined
+2026-06-18 14:48:58,624 | ERROR | Fatal error in main()
+Traceback (most recent call last):
+  File "C:\Users\reub0539\work\Planet_LSP\Code_LSP\00_img_clip_download_SK.py", line 528, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\reub0539\work\Planet_LSP\Code_LSP\00_img_clip_download_SK.py", line 475, in main
+    gdf = gpd.read_file(SHAPEFILE)
+  File "C:\Users\reub0539\AppData\Local\miniconda3\envs\scale_dependency\Lib\site-packages\geopandas\io\file.py", line 316, in _read_file
+    return _read_file_pyogrio(
+        filename, bbox=bbox, mask=mask, columns=columns, rows=rows, **kwargs
+    )
+  File "C:\Users\reub0539\AppData\Local\miniconda3\envs\scale_dependency\Lib\site-packages\geopandas\io\file.py", line 576, in _read_file_pyogrio
+    return pyogrio.read_dataframe(path_or_bytes, bbox=bbox, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\reub0539\AppData\Local\miniconda3\envs\scale_dependency\Lib\site-packages\pyogrio\geopandas.py", line 275, in read_dataframe
+    result = read_func(
+        path_or_buffer,
+    ...<14 lines>...
+        **kwargs,
+    )
+  File "C:\Users\reub0539\AppData\Local\miniconda3\envs\scale_dependency\Lib\site-packages\pyogrio\raw.py", line 198, in read
+    return ogr_read(
+        get_vsi_path_or_buffer(path_or_buffer),
+    ...<15 lines>...
+        datetime_as_string=datetime_as_string,
+    )
+  File "pyogrio/_io.pyx", line 1313, in pyogrio._io.ogr_read
+  File "pyogrio/_io.pyx", line 232, in pyogrio._io.ogr_open
+pyogrio.errors.DataSourceError: C:/Users/reub0539/OneDrive - Nexus365/Dphil/Projects/Project3/simplified_wytham.shp: No such file or directory
+2026-06-18 14:49:44,423 | INFO | Loaded 2 polygon tasks from shapefile
+2026-06-18 14:49:48,876 | INFO | bagley: 1702 scenes found, 594 pass Mar-Jun filter
+2026-06-18 14:49:50,198 | INFO | wytham: 2175 scenes found, 738 pass Mar-Jun filter
+2026-06-18 14:49:50,205 | INFO | Built registry with 970 unique scenes across 2 polygons
+2026-06-18 14:49:50,397 | INFO | Polygon bagley: 594 scenes across 10 years
+2026-06-18 14:49:50,397 | INFO |   bagley | year 2016: 4 scenes -> 1 chunk(s)
+2026-06-18 14:49:51,038 | ERROR | Order failed with 400
+2026-06-18 14:49:51,039 | ERROR | Response text: {"field":null,"general":[{"message":"Order request resulted in no acceptable assets. Likely due to lack of permissions."}]}
+
+2026-06-18 14:49:51,040 | ERROR | Request sent: {
+  "name": "bagley_2016_chunk_1",
+  "source_type": "scenes",
+  "order_type": "partial",
+  "products": [
+    {
+      "item_ids": [
+        "20160307_080216_0c47",
+        "20160419_144723_0c47",
+        "20160504_085050_0c53",
+        "20160504_085051_0c53"
+      ],
+      "item_type": "PSScene",
+      "product_bundle": "analytic_sr_udm2"
+    }
+  ],
+  "tools": [
+    {
+      "clip": {
+        "aoi": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -1.2756096486648303,
+                51.71227094299675
+              ],
+              [
+                -1.266665846397354,
+                51.71221544144996
+              ],
+              [
+                -1.2662923236096284,
+                51.71797661654677
+              ],
+              [
+                -1.275378074531166,
+                51.71835776716701
+              ],
+              [
+                -1.2756096486648303,
+                51.71227094299675
+              ]
+            ]
+          ]
+        }
+      }
+    }
+  ]
+}
+2026-06-18 14:49:51,040 | ERROR | Fatal error in main()
+Traceback (most recent call last):
+  File "C:\Users\reub0539\work\Planet_LSP\Code_LSP\00_img_clip_download_SK.py", line 528, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\reub0539\work\Planet_LSP\Code_LSP\00_img_clip_download_SK.py", line 521, in main
+    run_orders_per_polygon(sess, scene_registry, polygon_membership, polygon_geometries)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\reub0539\work\Planet_LSP\Code_LSP\00_img_clip_download_SK.py", line 449, in run_orders_per_polygon
+    order_url = submit_order(sess, order_request)
+  File "C:\Users\reub0539\work\Planet_LSP\Code_LSP\00_img_clip_download_SK.py", line 204, in submit_order
+    r.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\reub0539\AppData\Local\miniconda3\envs\scale_dependency\Lib\site-packages\requests\models.py", line 1028, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://api.planet.com/compute/ops/orders/v2
+2026-06-18 14:52:17,707 | INFO | Loaded 2 polygon tasks from shapefile
+2026-06-18 14:52:21,561 | INFO | bagley: 1702 scenes found, 594 pass Mar-Jun filter
+2026-06-18 14:52:22,651 | INFO | wytham: 2175 scenes found, 738 pass Mar-Jun filter
+2026-06-18 14:52:22,657 | INFO | Built registry with 970 unique scenes across 2 polygons
+2026-06-18 14:52:22,863 | INFO | Polygon bagley: 594 scenes across 10 years
+2026-06-18 14:52:22,863 | INFO |   bagley | year 2016: 4 scenes -> 1 chunk(s)
+2026-06-18 14:52:23,309 | ERROR | Order failed with 400
+2026-06-18 14:52:23,309 | ERROR | Response text: {"field":null,"general":[{"message":"Order request resulted in no acceptable assets. Likely due to lack of permissions."}]}
+
+2026-06-18 14:52:23,310 | ERROR | Request sent: {
+  "name": "bagley_2016_chunk_1",
+  "source_type": "scenes",
+  "order_type": "partial",
+  "products": [
+    {
+      "item_ids": [
+        "20160307_080216_0c47",
+        "20160419_144723_0c47",
+        "20160504_085050_0c53",
+        "20160504_085051_0c53"
+      ],
+      "item_type": "PSScene",
+      "product_bundle": "analytic_sr_udm2,analytic_udm2"
+    }
+  ],
+  "tools": [
+    {
+      "clip": {
+        "aoi": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -1.2756096486648303,
+                51.71227094299675
+              ],
+              [
+                -1.266665846397354,
+                51.71221544144996
+              ],
+              [
+                -1.2662923236096284,
+                51.71797661654677
+              ],
+              [
+                -1.275378074531166,
+                51.71835776716701
+              ],
+              [
+                -1.2756096486648303,
+                51.71227094299675
+              ]
+            ]
+          ]
+        }
+      }
+    }
+  ]
+}
+2026-06-18 14:52:23,310 | ERROR | Fatal error in main()
+Traceback (most recent call last):
+  File "C:\Users\reub0539\work\Planet_LSP\Code_LSP\00_img_clip_download_SK.py", line 528, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\reub0539\work\Planet_LSP\Code_LSP\00_img_clip_download_SK.py", line 521, in main
+    run_orders_per_polygon(sess, scene_registry, polygon_membership, polygon_geometries)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\reub0539\work\Planet_LSP\Code_LSP\00_img_clip_download_SK.py", line 449, in run_orders_per_polygon
+    order_url = submit_order(sess, order_request)
+  File "C:\Users\reub0539\work\Planet_LSP\Code_LSP\00_img_clip_download_SK.py", line 204, in submit_order
+    r.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\reub0539\AppData\Local\miniconda3\envs\scale_dependency\Lib\site-packages\requests\models.py", line 1028, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://api.planet.com/compute/ops/orders/v2
+2026-06-18 14:54:13,918 | INFO | Loaded 2 polygon tasks from shapefile
+2026-06-18 14:54:18,612 | INFO | bagley: 1702 scenes found, 594 pass Mar-Jun filter
+2026-06-18 14:54:19,543 | INFO | wytham: 2175 scenes found, 738 pass Mar-Jun filter
+2026-06-18 14:54:19,551 | INFO | Built registry with 970 unique scenes across 2 polygons
+2026-06-18 14:54:19,752 | INFO | Polygon bagley: 594 scenes across 10 years
+2026-06-18 14:54:19,782 | INFO |   bagley | year 2016: 4 scenes -> 1 chunk(s)
+2026-06-18 14:54:20,428 | ERROR | Order failed with 400
+2026-06-18 14:54:20,428 | ERROR | Response text: {"field":null,"general":[{"message":"Order request resulted in no acceptable assets. Likely due to lack of permissions."}]}
+
+2026-06-18 14:54:20,428 | ERROR | Request sent: {
+  "name": "bagley_2016_chunk_1",
+  "source_type": "scenes",
+  "order_type": "partial",
+  "products": [
+    {
+      "item_ids": [
+        "20160307_080216_0c47",
+        "20160419_144723_0c47",
+        "20160504_085050_0c53",
+        "20160504_085051_0c53"
+      ],
+      "item_type": "PSScene",
+      "product_bundle": "analytic_sr_udm2,analytic_udm2"
+    }
+  ],
+  "tools": [
+    {
+      "clip": {
+        "aoi": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -1.2756096486648303,
+                51.71227094299675
+              ],
+              [
+                -1.266665846397354,
+                51.71221544144996
+              ],
+              [
+                -1.2662923236096284,
+                51.71797661654677
+              ],
+              [
+                -1.275378074531166,
+                51.71835776716701
+              ],
+              [
+                -1.2756096486648303,
+                51.71227094299675
+              ]
+            ]
+          ]
+        }
+      }
+    }
+  ]
+}
+2026-06-18 14:54:20,429 | ERROR | Fatal error in main()
+Traceback (most recent call last):
+  File "C:\Users\reub0539\work\Planet_LSP\Code_LSP\00_img_clip_download_SK.py", line 528, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\reub0539\work\Planet_LSP\Code_LSP\00_img_clip_download_SK.py", line 521, in main
+    run_orders_per_polygon(sess, scene_registry, polygon_membership, polygon_geometries)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\reub0539\work\Planet_LSP\Code_LSP\00_img_clip_download_SK.py", line 449, in run_orders_per_polygon
+    order_url = submit_order(sess, order_request)
+  File "C:\Users\reub0539\work\Planet_LSP\Code_LSP\00_img_clip_download_SK.py", line 204, in submit_order
+    r.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\reub0539\AppData\Local\miniconda3\envs\scale_dependency\Lib\site-packages\requests\models.py", line 1028, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://api.planet.com/compute/ops/orders/v2
+2026-06-18 14:54:51,469 | INFO | Loaded 2 polygon tasks from shapefile
+2026-06-18 14:54:51,930 | INFO | bagley: 145 scenes found, 30 pass Mar-Jun filter
+2026-06-18 14:54:51,985 | INFO | wytham: 192 scenes found, 42 pass Mar-Jun filter
+2026-06-18 14:54:51,988 | INFO | Built registry with 55 unique scenes across 2 polygons
+2026-06-18 14:54:52,003 | INFO | Polygon bagley: 30 scenes across 2 years
+2026-06-18 14:54:52,003 | INFO |   bagley | year 2016: 4 scenes -> 1 chunk(s)
+2026-06-18 14:54:52,542 | ERROR | Order failed with 400
+2026-06-18 14:54:52,543 | ERROR | Response text: {"field":null,"general":[{"message":"Order request resulted in no acceptable assets. Likely due to lack of permissions."}]}
+
+2026-06-18 14:54:52,543 | ERROR | Request sent: {
+  "name": "bagley_2016_chunk_1",
+  "source_type": "scenes",
+  "order_type": "partial",
+  "products": [
+    {
+      "item_ids": [
+        "20160307_080216_0c47",
+        "20160419_144723_0c47",
+        "20160504_085050_0c53",
+        "20160504_085051_0c53"
+      ],
+      "item_type": "PSScene",
+      "product_bundle": "analytic_sr_udm2,analytic_udm2"
+    }
+  ],
+  "tools": [
+    {
+      "clip": {
+        "aoi": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -1.2756096486648303,
+                51.71227094299675
+              ],
+              [
+                -1.266665846397354,
+                51.71221544144996
+              ],
+              [
+                -1.2662923236096284,
+                51.71797661654677
+              ],
+              [
+                -1.275378074531166,
+                51.71835776716701
+              ],
+              [
+                -1.2756096486648303,
+                51.71227094299675
+              ]
+            ]
+          ]
+        }
+      }
+    }
+  ]
+}
+2026-06-18 14:54:52,544 | ERROR | Fatal error in main()
+Traceback (most recent call last):
+  File "C:\Users\reub0539\work\Planet_LSP\Code_LSP\00_img_clip_download_SK.py", line 528, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\reub0539\work\Planet_LSP\Code_LSP\00_img_clip_download_SK.py", line 521, in main
+    run_orders_per_polygon(sess, scene_registry, polygon_membership, polygon_geometries)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\reub0539\work\Planet_LSP\Code_LSP\00_img_clip_download_SK.py", line 449, in run_orders_per_polygon
+    order_url = submit_order(sess, order_request)
+  File "C:\Users\reub0539\work\Planet_LSP\Code_LSP\00_img_clip_download_SK.py", line 204, in submit_order
+    r.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\reub0539\AppData\Local\miniconda3\envs\scale_dependency\Lib\site-packages\requests\models.py", line 1028, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://api.planet.com/compute/ops/orders/v2
+2026-06-18 15:06:08,704 | INFO | Loaded 2 polygon tasks from shapefile
+2026-06-18 15:06:10,011 | INFO | bagley: 231 scenes found, 100 pass Mar-Jun filter
+2026-06-18 15:06:10,416 | INFO | wytham: 295 scenes found, 137 pass Mar-Jun filter
+2026-06-18 15:06:10,421 | INFO | Built registry with 178 unique scenes across 2 polygons
+2026-06-18 15:06:10,475 | INFO | Polygon bagley: 100 scenes across 1 years
+2026-06-18 15:06:10,475 | INFO |   bagley | year 2020: 100 scenes -> 1 chunk(s)
+2026-06-18 15:06:11,653 | INFO | Order submitted: https://api.planet.com/compute/ops/orders/v2/3780a840-436f-4558-8872-98f948fb59e7
+2026-06-18 15:06:11,868 | INFO | Order state: queued (https://api.planet.com/compute/ops/orders/v2/3780a840-436f-4558-8872-98f948fb59e7)
+2026-06-18 15:06:42,095 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3780a840-436f-4558-8872-98f948fb59e7)
+2026-06-18 15:07:12,290 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3780a840-436f-4558-8872-98f948fb59e7)
+2026-06-18 15:07:42,573 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3780a840-436f-4558-8872-98f948fb59e7)
+2026-06-18 15:08:12,777 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3780a840-436f-4558-8872-98f948fb59e7)
+2026-06-18 15:08:42,966 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3780a840-436f-4558-8872-98f948fb59e7)
+2026-06-18 15:09:13,241 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3780a840-436f-4558-8872-98f948fb59e7)
+2026-06-18 15:09:43,462 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3780a840-436f-4558-8872-98f948fb59e7)
+2026-06-18 15:10:13,660 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3780a840-436f-4558-8872-98f948fb59e7)
+2026-06-18 15:10:43,867 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3780a840-436f-4558-8872-98f948fb59e7)
+2026-06-18 15:11:14,080 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3780a840-436f-4558-8872-98f948fb59e7)
+2026-06-18 15:11:44,310 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3780a840-436f-4558-8872-98f948fb59e7)
+2026-06-18 15:12:14,534 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3780a840-436f-4558-8872-98f948fb59e7)
+2026-06-18 15:12:44,743 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3780a840-436f-4558-8872-98f948fb59e7)
+2026-06-18 15:13:14,972 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3780a840-436f-4558-8872-98f948fb59e7)
+2026-06-18 15:13:45,230 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3780a840-436f-4558-8872-98f948fb59e7)
+2026-06-18 15:14:15,447 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3780a840-436f-4558-8872-98f948fb59e7)
+2026-06-18 15:14:45,683 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3780a840-436f-4558-8872-98f948fb59e7)
+2026-06-18 15:15:15,962 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3780a840-436f-4558-8872-98f948fb59e7)
+2026-06-18 15:15:46,228 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3780a840-436f-4558-8872-98f948fb59e7)
+2026-06-18 15:16:16,421 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3780a840-436f-4558-8872-98f948fb59e7)
+2026-06-18 15:16:46,636 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3780a840-436f-4558-8872-98f948fb59e7)
+2026-06-18 15:17:17,136 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3780a840-436f-4558-8872-98f948fb59e7)
+2026-06-18 15:17:47,345 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3780a840-436f-4558-8872-98f948fb59e7)
+2026-06-18 15:18:17,589 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3780a840-436f-4558-8872-98f948fb59e7)
+2026-06-18 15:18:47,818 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3780a840-436f-4558-8872-98f948fb59e7)
+2026-06-18 15:19:18,039 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3780a840-436f-4558-8872-98f948fb59e7)
+2026-06-18 15:19:48,254 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3780a840-436f-4558-8872-98f948fb59e7)
+2026-06-18 15:20:18,750 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3780a840-436f-4558-8872-98f948fb59e7)
+2026-06-18 15:20:49,007 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3780a840-436f-4558-8872-98f948fb59e7)
+2026-06-18 15:21:19,639 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3780a840-436f-4558-8872-98f948fb59e7)
+2026-06-18 15:21:50,491 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3780a840-436f-4558-8872-98f948fb59e7)
+2026-06-18 15:22:21,596 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3780a840-436f-4558-8872-98f948fb59e7)
+2026-06-18 15:22:52,703 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3780a840-436f-4558-8872-98f948fb59e7)
+2026-06-18 15:23:23,561 | INFO | Order state: success (https://api.planet.com/compute/ops/orders/v2/3780a840-436f-4558-8872-98f948fb59e7)
+2026-06-18 15:23:23,963 | WARNING | Connection pool is full, discarding connection: api.planet.com. Connection pool size: 10
+2026-06-18 15:23:23,963 | WARNING | Connection pool is full, discarding connection: api.planet.com. Connection pool size: 10
+2026-06-18 15:23:26,371 | WARNING | Connection pool is full, discarding connection: link.planet.com. Connection pool size: 10
+2026-06-18 15:23:42,482 | WARNING | Connection pool is full, discarding connection: link.planet.com. Connection pool size: 10
+2026-06-18 15:23:45,918 | INFO | Downloaded 401/401 files -> C:/Users/reub0539/work/Planet_LSP/data/wytham_test\bagley\downloaded\2020\chunk_1
+2026-06-18 15:23:46,031 | INFO | Deleted temp download dir: C:/Users/reub0539/work/Planet_LSP/data/wytham_test\bagley\downloaded\2020\chunk_1
+2026-06-18 15:23:46,032 | INFO | Polygon wytham: 137 scenes across 1 years
+2026-06-18 15:23:46,032 | INFO |   wytham | year 2020: 137 scenes -> 1 chunk(s)
+2026-06-18 15:23:46,371 | ERROR | Order failed with 400
+2026-06-18 15:23:46,372 | ERROR | Response text: {"field":null,"general":[{"message":"Unable to accept order: Clip geometry contains an inner ring with an area of 0.001 sq meters. The minimum allowed size is 1.0 sq meters."}]}
+
+2026-06-18 15:23:46,373 | ERROR | Request sent: {
+  "name": "wytham_2020_chunk_1",
+  "source_type": "scenes",
+  "order_type": "partial",
+  "products": [
+    {
+      "item_ids": [
+        "20200301_104627_0f4e",
+        "20200302_110648_36_1061",
+        "20200306_083237_104e",
+        "20200306_083238_104e",
+        "20200306_102822_56_1062",
+        "20200306_102824_64_1062",
+        "20200308_103001_17_1065",
+        "20200308_103003_25_1065",
+        "20200309_082929_104b",
+        "20200309_082930_104b",
+        "20200312_104331_100c",
+        "20200312_104805_101f",
+        "20200313_083112_0f44",
+        "20200313_083113_0f44",
+        "20200313_104615_100a",
+        "20200314_082732_1048",
+        "20200316_104306_100c",
+        "20200316_104307_100c",
+        "20200322_110020_73_105c",
+        "20200323_104709_0f31",
+        "20200323_111053_27_1066",
+        "20200324_083001_1048",
+        "20200325_082615_0f49",
+        "20200325_082615_1_0f49",
+        "20200325_104500_0f4e",
+        "20200325_104501_0f4e",
+        "20200325_104514_100a",
+        "20200325_104515_100a",
+        "20200326_110839_71_1064",
+        "20200326_110841_74_1064",
+        "20200327_104701_0f31",
+        "20200327_104702_0f31",
+        "20200329_104449_100a",
+        "20200331_111055_42_1061",
+        "20200405_101804_63_2271",
+        "20200405_101806_83_2271",
+        "20200406_104712_1012",
+        "20200407_082524_0f36",
+        "20200407_082525_0f36",
+        "20200407_104558_1006",
+        "20200407_104559_1006",
+        "20200409_104712_103e",
+        "20200410_102453_02_1065",
+        "20200410_104638_1012",
+        "20200410_104639_1012",
+        "20200412_102707_13_1062",
+        "20200412_111117_96_1060",
+        "20200414_082525_0f2b",
+        "20200414_082526_0f2b",
+        "20200414_104939_1011",
+        "20200414_104940_1011",
+        "20200415_102824_38_1067",
+        "20200415_104848_0f52",
+        "20200415_104849_0f52",
+        "20200416_103237_0e26",
+        "20200416_103238_0e26",
+        "20200416_111054_08_1058",
+        "20200419_082541_0f2b",
+        "20200419_082542_0f2b",
+        "20200419_104800_0f52",
+        "20200421_104552_1003",
+        "20200422_082123_0f21",
+        "20200422_082123_1_0f21",
+        "20200422_082616_0f36",
+        "20200422_082616_1_0f36",
+        "20200423_102350_05_106b",
+        "20200423_102351_58_106b",
+        "20200425_104500_1003",
+        "20200425_104501_1003",
+        "20200425_104908_1001",
+        "20200426_082151_104a",
+        "20200426_082152_104a",
+        "20200426_104714_1011",
+        "20200429_082545_1_0f2b",
+        "20200502_082602_0f36",
+        "20200502_082603_0f36",
+        "20200506_102231_49_1069",
+        "20200508_102550_19_106e",
+        "20200508_104551_1027",
+        "20200508_104552_1027",
+        "20200509_102135_55_106a",
+        "20200509_102137_10_106a",
+        "20200511_104631_1038",
+        "20200514_104800_0f22",
+        "20200519_104318_1001",
+        "20200519_104319_1001",
+        "20200519_104523_1005",
+        "20200519_104524_1005",
+        "20200520_111005_69_1066",
+        "20200520_111007_67_1066",
+        "20200521_102551_60_106a",
+        "20200521_103244_0e3a",
+        "20200522_104658_0f3f",
+        "20200522_111442_81_1058",
+        "20200523_104515_1025",
+        "20200524_082038_0f24",
+        "20200524_082039_0f24",
+        "20200525_103321_0e19",
+        "20200525_103322_0e19",
+        "20200526_103426_0e0f",
+        "20200526_103427_0e0f",
+        "20200527_102327_68_1062",
+        "20200527_102329_73_1062",
+        "20200529_081628_1053",
+        "20200529_081629_1053",
+        "20200529_081802_0f24",
+        "20200529_081803_0f24",
+        "20200529_111049_71_1060",
+        "20200530_102234_36_1067",
+        "20200530_102236_39_1067",
+        "20200530_103316_0e0f",
+        "20200530_103317_0e0f",
+        "20200531_101758_41_2275",
+        "20200531_102447_71_1062",
+        "20200531_104258_1025",
+        "20200531_104259_1025",
+        "20200531_104615_1029",
+        "20200602_102132_13_1065",
+        "20200602_102134_18_1065",
+        "20200612_081821_1020",
+        "20200612_081822_1_1020",
+        "20200613_111308_97_1057",
+        "20200613_111310_49_1057",
+        "20200615_081355_104a",
+        "20200615_081355_1_104a",
+        "20200616_081223_0f21",
+        "20200616_081223_1_0f21",
+        "20200622_081148_104e",
+        "20200622_081149_104e",
+        "20200623_081450_0f2b",
+        "20200623_081451_0f2b",
+        "20200623_102108_88_106b",
+        "20200625_104629_0f28",
+        "20200625_104630_0f28",
+        "20200625_104912_1006",
+        "20200625_104913_1006",
+        "20200628_104456_100a"
+      ],
+      "item_type": "PSScene",
+      "product_bundle": "analytic_sr_udm2,analytic_udm2"
+    }
+  ],
+  "tools": [
+    {
+      "clip": {
+        "aoi": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -1.3480791504616845,
+                51.76777312596883
+              ],
+              [
+                -1.3479226637694866,
+                51.76706903710854
+              ],
+              [
+                -1.3473310986152185,
+                51.76684563606801
+              ],
+              [
+                -1.3476488338038808,
+                51.76517683053895
+              ],
+              [
+                -1.3475895675771983,
+                51.76464287207311
+              ],
+              [
+                -1.3473335453101316,
+                51.76444245853417
+              ],
+              [
+                -1.3460821136943408,
+                51.76441011964241
+              ],
+              [
+                -1.345790371425142,
+                51.7642165809002
+              ],
+              [
+                -1.3456716620742861,
+                51.76339937563569
+              ],
+              [
+                -1.3454427282501291,
+                51.76315863826142
+              ],
+              [
+                -1.3434782873977562,
+                51.76295996812209
+              ],
+              [
+                -1.3408642202690164,
+                51.76237242549702
+              ],
+              [
+                -1.3401009953846543,
+                51.76153856599423
+              ],
+              [
+                -1.338976113887682,
+                51.76107908216558
+              ],
+              [
+                -1.3379412407602198,
+                51.760393345239414
+              ],
+              [
+                -1.3368301900464927,
+                51.760017392888685
+              ],
+              [
+                -1.3362705347197652,
+                51.760083905557295
+              ],
+              [
+                -1.3358116165783114,
+                51.76040497614236
+              ],
+              [
+                -1.3346151722958357,
+                51.76007069350957
+              ],
+              [
+                -1.3340234143710488,
+                51.76016125921676
+              ],
+              [
+                -1.3337804041932466,
+                51.759194747487804
+              ],
+              [
+                -1.332632004820438,
+                51.75860923726623
+              ],
+              [
+                -1.3330659748848117,
+                51.75811106163458
+              ],
+              [
+                -1.3338221053543449,
+                51.75828773711651
+              ],
+              [
+                -1.3341612268649843,
+                51.75858306796578
+              ],
+              [
+                -1.3348822515456094,
+                51.758503485654884
+              ],
+              [
+                -1.3357050026846897,
+                51.75752710865828
+              ],
+              [
+                -1.3363082332433276,
+                51.757375287393224
+              ],
+              [
+                -1.336475779718433,
+                51.75697281972085
+              ],
+              [
+                -1.3363536678186576,
+                51.75639305040876
+              ],
+              [
+                -1.3358444597781032,
+                51.75620091667162
+              ],
+              [
+                -1.335384767917822,
+                51.75566891378362
+              ],
+              [
+                -1.3338818944062318,
+                51.75511873214251
+              ],
+              [
+                -1.3331624980179972,
+                51.75517259391959
+              ],
+              [
+                -1.3328696204282986,
+                51.75573518371727
+              ],
+              [
+                -1.331373090377545,
+                51.75542051349218
+              ],
+              [
+                -1.32824654092936,
+                51.7555939733083
+              ],
+              [
+                -1.3277896613350553,
+                51.75629151735906
+              ],
+              [
+                -1.3269214439370598,
+                51.75662846132003
+              ],
+              [
+                -1.326868043357093,
+                51.757244362107976
+              ],
+              [
+                -1.3259685686499183,
+                51.75751520482883
+              ],
+              [
+                -1.3249150394677727,
+                51.75833291233869
+              ],
+              [
+                -1.324714292491455,
+                51.75869497733583
+              ],
+              [
+                -1.3248351137444236,
+                51.75915613644542
+              ],
+              [
+                -1.3253702533518257,
+                51.75948233128752
+              ],
+              [
+                -1.3258058983782919,
+                51.76003662085793
+              ],
+              [
+                -1.3264021520216716,
+                51.76027478781629
+              ],
+              [
+                -1.3273542265497407,
+                51.76108974028688
+              ],
+              [
+                -1.3282583226829032,
+                51.761256327761124
+              ],
+              [
+                -1.3287309286866316,
+                51.76085520934619
+              ],
+              [
+                -1.330509899978441,
+                51.7610546458422
+              ],
+              [
+                -1.3302525248844705,
+                51.76147724121111
+              ],
+              [
+                -1.3286114540265994,
+                51.76231146263072
+              ],
+              [
+                -1.3272823964329008,
+                51.762641349930306
+              ],
+              [
+                -1.3263437977533143,
+                51.76265004543662
+              ],
+              [
+                -1.3247780855416607,
+                51.762325901333
+              ],
+              [
+                -1.3239479307916993,
+                51.762393782504034
+              ],
+              [
+                -1.321546287988446,
+                51.761771931050625
+              ],
+              [
+                -1.3174557278256418,
+                51.76189470796414
+              ],
+              [
+                -1.3173726969401662,
+                51.76153967765941
+              ],
+              [
+                -1.3169281533751476,
+                51.7613232832
+              ],
+              [
+                -1.3130972958896463,
+                51.7615362271278
+              ],
+              [
+                -1.3119884695636035,
+                51.76202783748073
+              ],
+              [
+                -1.3116374891392883,
+                51.762651860118815
+              ],
+              [
+                -1.3103704150513873,
+                51.76262378576218
+              ],
+              [
+                -1.3083788997691848,
+                51.76289386805038
+              ],
+              [
+                -1.3079027152867542,
+                51.76327847077988
+              ],
+              [
+                -1.307514504876478,
+                51.76413003084344
+              ],
+              [
+                -1.3061415415702342,
+                51.765646646661466
+              ],
+              [
+                -1.3023593356092087,
+                51.76349983142961
+              ],
+              [
+                -1.301637019439614,
+                51.76263970065891
+              ],
+              [
+                -1.3013783003104642,
+                51.76111815363609
+              ],
+              [
+                -1.3015378563066808,
+                51.75986010318959
+              ],
+              [
+                -1.304426149313692,
+                51.76040940903955
+              ],
+              [
+                -1.3047237366821798,
+                51.76029990569485
+              ],
+              [
+                -1.3049954085349593,
+                51.75989640705555
+              ],
+              [
+                -1.3048017761526802,
+                51.75933557609513
+              ],
+              [
+                -1.3018407552899862,
+                51.7582740144176
+              ],
+              [
+                -1.301513835530248,
+                51.758281503405556
+              ],
+              [
+                -1.3012365684544265,
+                51.75850761360325
+              ],
+              [
+                -1.298489384642137,
+                51.75802571907227
+              ],
+              [
+                -1.2982402159442386,
+                51.75756780694068
+              ],
+              [
+                -1.2979262262284985,
+                51.75747681588993
+              ],
+              [
+                -1.2963638343281425,
+                51.75759231454645
+              ],
+              [
+                -1.2959402776673927,
+                51.75864889174417
+              ],
+              [
+                -1.2959552581656282,
+                51.75904700997519
+              ],
+              [
+                -1.2964509430196507,
+                51.75958893727008
+              ],
+              [
+                -1.29688941308006,
+                51.76138577614911
+              ],
+              [
+                -1.2982610782668584,
+                51.76275026516311
+              ],
+              [
+                -1.3046119702652827,
+                51.76768526283065
+              ],
+              [
+                -1.3041238420445105,
+                51.76819350649414
+              ],
+              [
+                -1.3042894995554428,
+                51.76875285283068
+              ],
+              [
+                -1.3061994963761352,
+                51.7697835814626
+              ],
+              [
+                -1.3073782650347403,
+                51.76911860871634
+              ],
+              [
+                -1.3086770578445897,
+                51.77051164734359
+              ],
+              [
+                -1.3091869561972362,
+                51.77036912528145
+              ],
+              [
+                -1.3104428149934806,
+                51.769245342544615
+              ],
+              [
+                -1.3125019871319628,
+                51.76791494035479
+              ],
+              [
+                -1.3149310022940404,
+                51.767955662042006
+              ],
+              [
+                -1.316910389667048,
+                51.767484541688255
+              ],
+              [
+                -1.3180215518249714,
+                51.76762817188612
+              ],
+              [
+                -1.3192304515474589,
+                51.76754946214488
+              ],
+              [
+                -1.3198325758525424,
+                51.7673331299889
+              ],
+              [
+                -1.3206894909635902,
+                51.76628634509017
+              ],
+              [
+                -1.3212534861065681,
+                51.76590601738995
+              ],
+              [
+                -1.321806387678342,
+                51.76595986559205
+              ],
+              [
+                -1.3230982832253277,
+                51.7656016280758
+              ],
+              [
+                -1.3239837382989708,
+                51.76568990395265
+              ],
+              [
+                -1.3244728065623081,
+                51.76529618998097
+              ],
+              [
+                -1.3265686915402901,
+                51.76507970438823
+              ],
+              [
+                -1.326898496151138,
+                51.76517601864944
+              ],
+              [
+                -1.3273292243111954,
+                51.765670262539615
+              ],
+              [
+                -1.3278531449625088,
+                51.765777512815866
+              ],
+              [
+                -1.3269578522813188,
+                51.76765237707681
+              ],
+              [
+                -1.3248649745980678,
+                51.769023044623765
+              ],
+              [
+                -1.324599917600793,
+                51.769726781457514
+              ],
+              [
+                -1.3249678142710868,
+                51.77020707273651
+              ],
+              [
+                -1.3254066593744398,
+                51.77025956992028
+              ],
+              [
+                -1.327447935071539,
+                51.76925095439296
+              ],
+              [
+                -1.3286998976044249,
+                51.76982225447775
+              ],
+              [
+                -1.3281476123779363,
+                51.77029565381488
+              ],
+              [
+                -1.3280380597301726,
+                51.770626903609404
+              ],
+              [
+                -1.328349018440388,
+                51.773156740463136
+              ],
+              [
+                -1.3279167292113951,
+                51.77347368241118
+              ],
+              [
+                -1.326432309857862,
+                51.7736877042193
+              ],
+              [
+                -1.3253890552446537,
+                51.773601196871475
+              ],
+              [
+                -1.3250898627350125,
+                51.77382398447543
+              ],
+              [
+                -1.3242165807187232,
+                51.77365822785053
+              ],
+              [
+                -1.3236075450079183,
+                51.77396074796046
+              ],
+              [
+                -1.3232110672029604,
+                51.77368145438381
+              ],
+              [
+                -1.3226657598928964,
+                51.77370144463505
+              ],
+              [
+                -1.3217831087771506,
+                51.77407026712342
+              ],
+              [
+                -1.321619709539434,
+                51.77448196354379
+              ],
+              [
+                -1.3225844038266925,
+                51.77557092474768
+              ],
+              [
+                -1.3242766996944553,
+                51.77642907462869
+              ],
+              [
+                -1.3228386861069208,
+                51.77841306373479
+              ],
+              [
+                -1.3227591403609684,
+                51.77873159870491
+              ],
+              [
+                -1.3228943100148252,
+                51.77903079967008
+              ],
+              [
+                -1.3272362903846997,
+                51.78118167963779
+              ],
+              [
+                -1.3300111022389505,
+                51.78139368996496
+              ],
+              [
+                -1.3302042585655462,
+                51.78246004583971
+              ],
+              [
+                -1.3309942271610022,
+                51.783505846960125
+              ],
+              [
+                -1.3313669951583318,
+                51.78364425976819
+              ],
+              [
+                -1.334760137752675,
+                51.78255964696564
+              ],
+              [
+                -1.3390034598906404,
+                51.78188433759216
+              ],
+              [
+                -1.3418689684210383,
+                51.78083062565619
+              ],
+              [
+                -1.3421475551178597,
+                51.78099318901816
+              ],
+              [
+                -1.342492084188935,
+                51.78096493646311
+              ],
+              [
+                -1.343897521873416,
+                51.78022776153483
+              ],
+              [
+                -1.3454926414121064,
+                51.77897213592794
+              ],
+              [
+                -1.3488192034490725,
+                51.77715365520791
+              ],
+              [
+                -1.3489749310108992,
+                51.776876464722
+              ],
+              [
+                -1.3489320611746856,
+                51.77656142850799
+              ],
+              [
+                -1.3484866498878723,
+                51.776202489721435
+              ],
+              [
+                -1.3480514645638701,
+                51.77611507692741
+              ],
+              [
+                -1.3474964457969776,
+                51.7763551915961
+              ],
+              [
+                -1.3468866691397312,
+                51.77629729453615
+              ],
+              [
+                -1.346235431486934,
+                51.77586328197668
+              ],
+              [
+                -1.3461775898058577,
+                51.77506574619371
+              ],
+              [
+                -1.3455762183608324,
+                51.77367745464455
+              ],
+              [
+                -1.3453985442187169,
+                51.77208737084391
+              ],
+              [
+                -1.3454436633562767,
+                51.7712822300672
+              ],
+              [
+                -1.3462450855879975,
+                51.77121415329743
+              ],
+              [
+                -1.34696854178297,
+                51.770858228601426
+              ],
+              [
+                -1.3471114325796236,
+                51.7705777174198
+              ],
+              [
+                -1.3482656737898286,
+                51.77045765313352
+              ],
+              [
+                -1.349045970776358,
+                51.769700092552405
+              ],
+              [
+                -1.3490265569874673,
+                51.769110840958845
+              ],
+              [
+                -1.3484019249572246,
+                51.76873551020655
+              ],
+              [
+                -1.3477888502265696,
+                51.768868646999586
+              ],
+              [
+                -1.347039117505865,
+                51.76875093246987
+              ],
+              [
+                -1.347803951920309,
+                51.76831165634587
+              ],
+              [
+                -1.3480791504616845,
+                51.76777312596883
+              ]
+            ],
+            [
+              [
+                -1.3246521296287985,
+                51.776782838000486
+              ],
+              [
+                -1.3246542041327702,
+                51.776783939128535
+              ],
+              [
+                -1.324654500572239,
+                51.776784169911956
+              ],
+              [
+                -1.3246521296287985,
+                51.776782838000486
+              ]
+            ]
+          ]
+        }
+      }
+    }
+  ]
+}
+2026-06-18 15:23:46,400 | ERROR | Fatal error in main()
+Traceback (most recent call last):
+  File "C:\Users\reub0539\work\Planet_LSP\Code_LSP\00_img_clip_download_SK.py", line 528, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\reub0539\work\Planet_LSP\Code_LSP\00_img_clip_download_SK.py", line 521, in main
+    run_orders_per_polygon(sess, scene_registry, polygon_membership, polygon_geometries)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\reub0539\work\Planet_LSP\Code_LSP\00_img_clip_download_SK.py", line 449, in run_orders_per_polygon
+    order_url = submit_order(sess, order_request)
+  File "C:\Users\reub0539\work\Planet_LSP\Code_LSP\00_img_clip_download_SK.py", line 204, in submit_order
+    r.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\reub0539\AppData\Local\miniconda3\envs\scale_dependency\Lib\site-packages\requests\models.py", line 1028, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://api.planet.com/compute/ops/orders/v2
+2026-06-18 15:32:24,536 | INFO | Loaded 2 polygon tasks from shapefile
+2026-06-18 15:32:30,076 | INFO | bagley: 1557 scenes found, 564 pass Mar-Jun filter
+2026-06-18 15:32:31,156 | INFO | wytham: 1983 scenes found, 696 pass Mar-Jun filter
+2026-06-18 15:32:31,161 | INFO | Built registry with 915 unique scenes across 2 polygons
+2026-06-18 15:32:31,345 | INFO | Polygon bagley: 564 scenes across 8 years
+2026-06-18 15:32:31,345 | INFO |   bagley | year 2018: 64 scenes -> 1 chunk(s)
+2026-06-18 15:32:32,480 | INFO | Order submitted: https://api.planet.com/compute/ops/orders/v2/bb354ae4-e4c1-4aa8-ad75-451b9d37cbbc
+2026-06-18 15:32:32,704 | INFO | Order state: queued (https://api.planet.com/compute/ops/orders/v2/bb354ae4-e4c1-4aa8-ad75-451b9d37cbbc)
+2026-06-18 15:33:02,914 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/bb354ae4-e4c1-4aa8-ad75-451b9d37cbbc)
+2026-06-18 15:33:33,113 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/bb354ae4-e4c1-4aa8-ad75-451b9d37cbbc)
+2026-06-18 15:34:03,306 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/bb354ae4-e4c1-4aa8-ad75-451b9d37cbbc)
+2026-06-18 15:34:33,496 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/bb354ae4-e4c1-4aa8-ad75-451b9d37cbbc)
+2026-06-18 15:35:03,721 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/bb354ae4-e4c1-4aa8-ad75-451b9d37cbbc)
+2026-06-18 15:35:33,930 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/bb354ae4-e4c1-4aa8-ad75-451b9d37cbbc)
+2026-06-18 15:36:04,278 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/bb354ae4-e4c1-4aa8-ad75-451b9d37cbbc)
+2026-06-18 15:36:34,545 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/bb354ae4-e4c1-4aa8-ad75-451b9d37cbbc)
+2026-06-18 15:37:04,748 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/bb354ae4-e4c1-4aa8-ad75-451b9d37cbbc)
+2026-06-18 15:37:34,974 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/bb354ae4-e4c1-4aa8-ad75-451b9d37cbbc)
+2026-06-18 15:38:05,232 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/bb354ae4-e4c1-4aa8-ad75-451b9d37cbbc)
+2026-06-18 15:38:35,421 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/bb354ae4-e4c1-4aa8-ad75-451b9d37cbbc)
+2026-06-18 15:39:05,674 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/bb354ae4-e4c1-4aa8-ad75-451b9d37cbbc)
+2026-06-18 15:39:35,903 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/bb354ae4-e4c1-4aa8-ad75-451b9d37cbbc)
+2026-06-18 15:40:06,129 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/bb354ae4-e4c1-4aa8-ad75-451b9d37cbbc)
+2026-06-18 15:40:36,320 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/bb354ae4-e4c1-4aa8-ad75-451b9d37cbbc)
+2026-06-18 15:41:07,059 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/bb354ae4-e4c1-4aa8-ad75-451b9d37cbbc)
+2026-06-18 15:41:37,264 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/bb354ae4-e4c1-4aa8-ad75-451b9d37cbbc)
+2026-06-18 15:42:07,486 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/bb354ae4-e4c1-4aa8-ad75-451b9d37cbbc)
+2026-06-18 15:42:37,714 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/bb354ae4-e4c1-4aa8-ad75-451b9d37cbbc)
+2026-06-18 15:43:08,316 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/bb354ae4-e4c1-4aa8-ad75-451b9d37cbbc)
+2026-06-18 15:43:38,520 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/bb354ae4-e4c1-4aa8-ad75-451b9d37cbbc)
+2026-06-18 15:44:08,725 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/bb354ae4-e4c1-4aa8-ad75-451b9d37cbbc)
+2026-06-18 15:44:38,938 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/bb354ae4-e4c1-4aa8-ad75-451b9d37cbbc)
+2026-06-18 15:45:09,148 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/bb354ae4-e4c1-4aa8-ad75-451b9d37cbbc)
+2026-06-18 15:45:39,347 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/bb354ae4-e4c1-4aa8-ad75-451b9d37cbbc)
+2026-06-18 15:46:09,581 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/bb354ae4-e4c1-4aa8-ad75-451b9d37cbbc)
+2026-06-18 15:46:39,816 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/bb354ae4-e4c1-4aa8-ad75-451b9d37cbbc)
+2026-06-18 15:47:10,019 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/bb354ae4-e4c1-4aa8-ad75-451b9d37cbbc)
+2026-06-18 15:47:40,221 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/bb354ae4-e4c1-4aa8-ad75-451b9d37cbbc)
+2026-06-18 15:48:10,720 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/bb354ae4-e4c1-4aa8-ad75-451b9d37cbbc)
+2026-06-18 15:48:41,368 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/bb354ae4-e4c1-4aa8-ad75-451b9d37cbbc)
+2026-06-18 15:49:11,983 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/bb354ae4-e4c1-4aa8-ad75-451b9d37cbbc)
+2026-06-18 15:49:42,599 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/bb354ae4-e4c1-4aa8-ad75-451b9d37cbbc)
+2026-06-18 15:50:13,185 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/bb354ae4-e4c1-4aa8-ad75-451b9d37cbbc)
+2026-06-18 15:50:43,778 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/bb354ae4-e4c1-4aa8-ad75-451b9d37cbbc)
+2026-06-18 15:51:14,464 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/bb354ae4-e4c1-4aa8-ad75-451b9d37cbbc)
+2026-06-18 15:51:45,064 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/bb354ae4-e4c1-4aa8-ad75-451b9d37cbbc)
+2026-06-18 15:52:15,683 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/bb354ae4-e4c1-4aa8-ad75-451b9d37cbbc)
+2026-06-18 15:52:46,344 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/bb354ae4-e4c1-4aa8-ad75-451b9d37cbbc)
+2026-06-18 15:53:16,943 | INFO | Order state: success (https://api.planet.com/compute/ops/orders/v2/bb354ae4-e4c1-4aa8-ad75-451b9d37cbbc)
+2026-06-18 15:53:17,248 | WARNING | Connection pool is full, discarding connection: api.planet.com. Connection pool size: 10
+2026-06-18 15:53:17,250 | WARNING | Connection pool is full, discarding connection: api.planet.com. Connection pool size: 10
+2026-06-18 15:53:17,535 | WARNING | Connection pool is full, discarding connection: link.planet.com. Connection pool size: 10
+2026-06-18 15:53:17,772 | WARNING | Connection pool is full, discarding connection: api.planet.com. Connection pool size: 10
+2026-06-18 15:53:19,877 | WARNING | Connection pool is full, discarding connection: link.planet.com. Connection pool size: 10
+2026-06-18 15:53:28,508 | WARNING | Connection pool is full, discarding connection: link.planet.com. Connection pool size: 10
+2026-06-18 15:53:30,594 | INFO | Downloaded 239/239 files -> C:/Users/reub0539/work/Planet_LSP/data/wytham_test\bagley\downloaded\2018\chunk_1
+2026-06-18 15:53:30,665 | INFO | Deleted temp download dir: C:/Users/reub0539/work/Planet_LSP/data/wytham_test\bagley\downloaded\2018\chunk_1
+2026-06-18 15:53:30,666 | INFO |   bagley | year 2019: 71 scenes -> 1 chunk(s)
+2026-06-18 15:53:32,293 | INFO | Order submitted: https://api.planet.com/compute/ops/orders/v2/a3e2c03f-30c2-4292-a7a4-0915ba9cde7a
+2026-06-18 15:53:32,499 | INFO | Order state: queued (https://api.planet.com/compute/ops/orders/v2/a3e2c03f-30c2-4292-a7a4-0915ba9cde7a)
+2026-06-18 15:54:02,858 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/a3e2c03f-30c2-4292-a7a4-0915ba9cde7a)
+2026-06-18 15:54:33,055 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/a3e2c03f-30c2-4292-a7a4-0915ba9cde7a)
+2026-06-18 15:55:03,267 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/a3e2c03f-30c2-4292-a7a4-0915ba9cde7a)
+2026-06-18 15:55:33,488 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/a3e2c03f-30c2-4292-a7a4-0915ba9cde7a)
+2026-06-18 15:56:03,676 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/a3e2c03f-30c2-4292-a7a4-0915ba9cde7a)
+2026-06-18 15:56:33,865 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/a3e2c03f-30c2-4292-a7a4-0915ba9cde7a)
+2026-06-18 15:57:04,094 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/a3e2c03f-30c2-4292-a7a4-0915ba9cde7a)
+2026-06-18 15:57:34,347 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/a3e2c03f-30c2-4292-a7a4-0915ba9cde7a)
+2026-06-18 15:58:04,566 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/a3e2c03f-30c2-4292-a7a4-0915ba9cde7a)
+2026-06-18 15:58:34,762 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/a3e2c03f-30c2-4292-a7a4-0915ba9cde7a)
+2026-06-18 15:59:04,991 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/a3e2c03f-30c2-4292-a7a4-0915ba9cde7a)
+2026-06-18 15:59:35,201 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/a3e2c03f-30c2-4292-a7a4-0915ba9cde7a)
+2026-06-18 16:00:05,477 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/a3e2c03f-30c2-4292-a7a4-0915ba9cde7a)
+2026-06-18 16:00:35,684 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/a3e2c03f-30c2-4292-a7a4-0915ba9cde7a)
+2026-06-18 16:01:06,288 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/a3e2c03f-30c2-4292-a7a4-0915ba9cde7a)
+2026-06-18 16:01:36,924 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/a3e2c03f-30c2-4292-a7a4-0915ba9cde7a)
+2026-06-18 16:02:07,566 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/a3e2c03f-30c2-4292-a7a4-0915ba9cde7a)
+2026-06-18 16:02:38,221 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/a3e2c03f-30c2-4292-a7a4-0915ba9cde7a)
+2026-06-18 16:03:08,882 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/a3e2c03f-30c2-4292-a7a4-0915ba9cde7a)
+2026-06-18 16:03:39,526 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/a3e2c03f-30c2-4292-a7a4-0915ba9cde7a)
+2026-06-18 16:04:10,182 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/a3e2c03f-30c2-4292-a7a4-0915ba9cde7a)
+2026-06-18 16:04:40,811 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/a3e2c03f-30c2-4292-a7a4-0915ba9cde7a)
+2026-06-18 16:05:11,463 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/a3e2c03f-30c2-4292-a7a4-0915ba9cde7a)
+2026-06-18 16:05:42,168 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/a3e2c03f-30c2-4292-a7a4-0915ba9cde7a)
+2026-06-18 16:06:12,789 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/a3e2c03f-30c2-4292-a7a4-0915ba9cde7a)
+2026-06-18 16:06:43,519 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/a3e2c03f-30c2-4292-a7a4-0915ba9cde7a)
+2026-06-18 16:07:14,359 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/a3e2c03f-30c2-4292-a7a4-0915ba9cde7a)
+2026-06-18 16:07:45,092 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/a3e2c03f-30c2-4292-a7a4-0915ba9cde7a)
+2026-06-18 16:08:15,752 | INFO | Order state: success (https://api.planet.com/compute/ops/orders/v2/a3e2c03f-30c2-4292-a7a4-0915ba9cde7a)
+2026-06-18 16:08:16,123 | WARNING | Connection pool is full, discarding connection: api.planet.com. Connection pool size: 10
+2026-06-18 16:08:16,124 | WARNING | Connection pool is full, discarding connection: api.planet.com. Connection pool size: 10
+2026-06-18 16:08:22,754 | WARNING | Connection pool is full, discarding connection: link.planet.com. Connection pool size: 10
+2026-06-18 16:08:28,404 | WARNING | Connection pool is full, discarding connection: link.planet.com. Connection pool size: 10
+2026-06-18 16:08:28,420 | WARNING | Connection pool is full, discarding connection: link.planet.com. Connection pool size: 10
+2026-06-18 16:08:28,435 | INFO | Downloaded 285/285 files -> C:/Users/reub0539/work/Planet_LSP/data/wytham_test\bagley\downloaded\2019\chunk_1
+2026-06-18 16:08:28,515 | INFO | Deleted temp download dir: C:/Users/reub0539/work/Planet_LSP/data/wytham_test\bagley\downloaded\2019\chunk_1
+2026-06-18 16:08:28,515 | INFO |   bagley | year 2020: 100 scenes -> 1 chunk(s)
+2026-06-18 16:08:30,517 | INFO | Order submitted: https://api.planet.com/compute/ops/orders/v2/3d90d203-6068-40f2-8c31-adabb8896009
+2026-06-18 16:08:30,699 | INFO | Order state: queued (https://api.planet.com/compute/ops/orders/v2/3d90d203-6068-40f2-8c31-adabb8896009)
+2026-06-18 16:09:00,897 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3d90d203-6068-40f2-8c31-adabb8896009)
+2026-06-18 16:09:31,146 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3d90d203-6068-40f2-8c31-adabb8896009)
+2026-06-18 16:10:01,354 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3d90d203-6068-40f2-8c31-adabb8896009)
+2026-06-18 16:10:32,146 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3d90d203-6068-40f2-8c31-adabb8896009)
+2026-06-18 16:11:02,336 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3d90d203-6068-40f2-8c31-adabb8896009)
+2026-06-18 16:11:32,552 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3d90d203-6068-40f2-8c31-adabb8896009)
+2026-06-18 16:12:02,768 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3d90d203-6068-40f2-8c31-adabb8896009)
+2026-06-18 16:12:33,019 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3d90d203-6068-40f2-8c31-adabb8896009)
+2026-06-18 16:13:03,235 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3d90d203-6068-40f2-8c31-adabb8896009)
+2026-06-18 16:13:33,421 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3d90d203-6068-40f2-8c31-adabb8896009)
+2026-06-18 16:14:03,647 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3d90d203-6068-40f2-8c31-adabb8896009)
+2026-06-18 16:14:33,843 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3d90d203-6068-40f2-8c31-adabb8896009)
+2026-06-18 16:15:04,094 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3d90d203-6068-40f2-8c31-adabb8896009)
+2026-06-18 16:15:34,308 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3d90d203-6068-40f2-8c31-adabb8896009)
+2026-06-18 16:16:04,513 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3d90d203-6068-40f2-8c31-adabb8896009)
+2026-06-18 16:16:34,718 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3d90d203-6068-40f2-8c31-adabb8896009)
+2026-06-18 16:17:04,921 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3d90d203-6068-40f2-8c31-adabb8896009)
+2026-06-18 16:17:35,799 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3d90d203-6068-40f2-8c31-adabb8896009)
+2026-06-18 16:18:06,623 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3d90d203-6068-40f2-8c31-adabb8896009)
+2026-06-18 16:18:37,435 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3d90d203-6068-40f2-8c31-adabb8896009)
+2026-06-18 16:19:08,293 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3d90d203-6068-40f2-8c31-adabb8896009)
+2026-06-18 16:19:39,157 | INFO | Order state: success (https://api.planet.com/compute/ops/orders/v2/3d90d203-6068-40f2-8c31-adabb8896009)
+2026-06-18 16:19:39,452 | WARNING | Connection pool is full, discarding connection: api.planet.com. Connection pool size: 10
+2026-06-18 16:19:39,453 | WARNING | Connection pool is full, discarding connection: api.planet.com. Connection pool size: 10
+2026-06-18 16:19:51,842 | WARNING | Connection pool is full, discarding connection: link.planet.com. Connection pool size: 10
+2026-06-18 16:19:58,486 | WARNING | Connection pool is full, discarding connection: link.planet.com. Connection pool size: 10
+2026-06-18 16:19:59,102 | INFO | Downloaded 401/401 files -> C:/Users/reub0539/work/Planet_LSP/data/wytham_test\bagley\downloaded\2020\chunk_1
+2026-06-18 16:19:59,220 | INFO | Deleted temp download dir: C:/Users/reub0539/work/Planet_LSP/data/wytham_test\bagley\downloaded\2020\chunk_1
+2026-06-18 16:19:59,220 | INFO |   bagley | year 2021: 66 scenes -> 1 chunk(s)
+2026-06-18 16:20:00,629 | INFO | Order submitted: https://api.planet.com/compute/ops/orders/v2/490016fb-531a-443c-b126-1a68dd067051
+2026-06-18 16:20:00,845 | INFO | Order state: queued (https://api.planet.com/compute/ops/orders/v2/490016fb-531a-443c-b126-1a68dd067051)
+2026-06-18 16:20:31,225 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/490016fb-531a-443c-b126-1a68dd067051)
+2026-06-18 16:21:01,469 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/490016fb-531a-443c-b126-1a68dd067051)
+2026-06-18 16:21:31,696 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/490016fb-531a-443c-b126-1a68dd067051)
+2026-06-18 16:22:01,960 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/490016fb-531a-443c-b126-1a68dd067051)
+2026-06-18 16:22:32,235 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/490016fb-531a-443c-b126-1a68dd067051)
+2026-06-18 16:23:02,424 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/490016fb-531a-443c-b126-1a68dd067051)
+2026-06-18 16:23:32,801 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/490016fb-531a-443c-b126-1a68dd067051)
+2026-06-18 16:24:03,007 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/490016fb-531a-443c-b126-1a68dd067051)
+2026-06-18 16:24:33,212 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/490016fb-531a-443c-b126-1a68dd067051)
+2026-06-18 16:25:03,415 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/490016fb-531a-443c-b126-1a68dd067051)
+2026-06-18 16:25:33,653 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/490016fb-531a-443c-b126-1a68dd067051)
+2026-06-18 16:26:03,870 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/490016fb-531a-443c-b126-1a68dd067051)
+2026-06-18 16:26:34,077 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/490016fb-531a-443c-b126-1a68dd067051)
+2026-06-18 16:27:04,277 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/490016fb-531a-443c-b126-1a68dd067051)
+2026-06-18 16:27:34,517 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/490016fb-531a-443c-b126-1a68dd067051)
+2026-06-18 16:28:04,714 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/490016fb-531a-443c-b126-1a68dd067051)
+2026-06-18 16:28:34,912 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/490016fb-531a-443c-b126-1a68dd067051)
+2026-06-18 16:29:05,149 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/490016fb-531a-443c-b126-1a68dd067051)
+2026-06-18 16:29:35,347 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/490016fb-531a-443c-b126-1a68dd067051)
+2026-06-18 16:30:05,565 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/490016fb-531a-443c-b126-1a68dd067051)
+2026-06-18 16:30:35,770 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/490016fb-531a-443c-b126-1a68dd067051)
+2026-06-18 16:31:06,041 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/490016fb-531a-443c-b126-1a68dd067051)
+2026-06-18 16:31:36,245 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/490016fb-531a-443c-b126-1a68dd067051)
+2026-06-18 16:32:06,453 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/490016fb-531a-443c-b126-1a68dd067051)
+2026-06-18 16:32:36,802 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/490016fb-531a-443c-b126-1a68dd067051)
+2026-06-18 16:33:07,144 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/490016fb-531a-443c-b126-1a68dd067051)
+2026-06-18 16:33:37,342 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/490016fb-531a-443c-b126-1a68dd067051)
+2026-06-18 16:34:07,594 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/490016fb-531a-443c-b126-1a68dd067051)
+2026-06-18 16:34:37,803 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/490016fb-531a-443c-b126-1a68dd067051)
+2026-06-18 16:35:07,999 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/490016fb-531a-443c-b126-1a68dd067051)
+2026-06-18 16:35:38,318 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/490016fb-531a-443c-b126-1a68dd067051)
+2026-06-18 16:36:08,512 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/490016fb-531a-443c-b126-1a68dd067051)
+2026-06-18 16:36:38,708 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/490016fb-531a-443c-b126-1a68dd067051)
+2026-06-18 16:37:08,922 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/490016fb-531a-443c-b126-1a68dd067051)
+2026-06-18 16:37:39,382 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/490016fb-531a-443c-b126-1a68dd067051)
+2026-06-18 16:38:09,586 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/490016fb-531a-443c-b126-1a68dd067051)
+2026-06-18 16:38:39,797 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/490016fb-531a-443c-b126-1a68dd067051)
+2026-06-18 16:39:10,001 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/490016fb-531a-443c-b126-1a68dd067051)
+2026-06-18 16:39:40,204 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/490016fb-531a-443c-b126-1a68dd067051)
+2026-06-18 16:40:10,416 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/490016fb-531a-443c-b126-1a68dd067051)
+2026-06-18 16:40:40,960 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/490016fb-531a-443c-b126-1a68dd067051)
+2026-06-18 16:41:11,770 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/490016fb-531a-443c-b126-1a68dd067051)
+2026-06-18 16:41:42,424 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/490016fb-531a-443c-b126-1a68dd067051)
+2026-06-18 16:42:13,457 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/490016fb-531a-443c-b126-1a68dd067051)
+2026-06-18 16:42:44,057 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/490016fb-531a-443c-b126-1a68dd067051)
+2026-06-18 16:43:14,791 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/490016fb-531a-443c-b126-1a68dd067051)
+2026-06-18 16:43:45,712 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/490016fb-531a-443c-b126-1a68dd067051)
+2026-06-18 16:44:16,478 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/490016fb-531a-443c-b126-1a68dd067051)
+2026-06-18 16:44:47,242 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/490016fb-531a-443c-b126-1a68dd067051)
+2026-06-18 16:45:18,007 | INFO | Order state: success (https://api.planet.com/compute/ops/orders/v2/490016fb-531a-443c-b126-1a68dd067051)
+2026-06-18 16:45:18,296 | WARNING | Connection pool is full, discarding connection: api.planet.com. Connection pool size: 10
+2026-06-18 16:45:18,298 | WARNING | Connection pool is full, discarding connection: api.planet.com. Connection pool size: 10
+2026-06-18 16:45:18,642 | WARNING | Connection pool is full, discarding connection: link.planet.com. Connection pool size: 10
+2026-06-18 16:45:29,039 | WARNING | Connection pool is full, discarding connection: api.planet.com. Connection pool size: 10
+2026-06-18 16:45:30,188 | WARNING | Connection pool is full, discarding connection: link.planet.com. Connection pool size: 10
+2026-06-18 16:45:32,479 | INFO | Downloaded 265/265 files -> C:/Users/reub0539/work/Planet_LSP/data/wytham_test\bagley\downloaded\2021\chunk_1
+2026-06-18 16:45:32,557 | INFO | Deleted temp download dir: C:/Users/reub0539/work/Planet_LSP/data/wytham_test\bagley\downloaded\2021\chunk_1
+2026-06-18 16:45:32,558 | INFO |   bagley | year 2022: 57 scenes -> 1 chunk(s)
+2026-06-18 16:45:34,080 | INFO | Order submitted: https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025
+2026-06-18 16:45:34,289 | INFO | Order state: queued (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 16:46:04,499 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 16:46:34,706 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 16:47:04,912 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 16:47:35,126 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 16:48:05,680 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 16:48:36,015 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 16:49:06,205 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 16:49:36,540 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 16:50:06,734 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 16:50:36,957 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 16:51:07,153 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 16:51:37,339 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 16:52:07,566 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 16:52:37,769 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 16:53:07,986 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 16:53:38,183 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 16:54:08,405 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 16:54:38,629 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 16:55:08,828 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 16:55:39,065 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 16:56:09,271 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 16:56:39,478 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 16:57:09,671 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 16:57:40,279 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 16:58:10,596 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 16:58:40,802 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 16:59:11,031 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 16:59:41,252 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 17:00:11,469 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 17:00:41,693 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 17:01:11,895 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 17:01:42,134 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 17:02:12,345 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 17:02:42,565 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 17:03:12,824 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 17:03:43,097 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 17:04:13,358 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 17:04:44,049 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 17:05:14,298 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 17:05:44,718 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 17:06:14,996 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 17:06:45,205 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 17:07:15,422 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 17:07:46,015 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 17:08:16,248 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 17:08:46,518 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 17:09:17,011 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 17:09:47,792 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 17:10:18,440 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 17:10:49,342 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 17:11:19,901 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 17:11:50,731 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 17:12:21,329 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 17:12:51,911 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 17:13:22,464 | INFO | Order state: success (https://api.planet.com/compute/ops/orders/v2/67907007-8dcb-4153-af67-5a1396292025)
+2026-06-18 17:13:22,751 | WARNING | Connection pool is full, discarding connection: api.planet.com. Connection pool size: 10
+2026-06-18 17:13:22,752 | WARNING | Connection pool is full, discarding connection: api.planet.com. Connection pool size: 10
+2026-06-18 17:13:23,806 | WARNING | Connection pool is full, discarding connection: link.planet.com. Connection pool size: 10
+2026-06-18 17:13:26,928 | WARNING | Connection pool is full, discarding connection: api.planet.com. Connection pool size: 10
+2026-06-18 17:13:27,491 | WARNING | Connection pool is full, discarding connection: link.planet.com. Connection pool size: 10
+2026-06-18 17:13:37,906 | INFO | Downloaded 229/229 files -> C:/Users/reub0539/work/Planet_LSP/data/wytham_test\bagley\downloaded\2022\chunk_1
+2026-06-18 17:13:37,978 | INFO | Deleted temp download dir: C:/Users/reub0539/work/Planet_LSP/data/wytham_test\bagley\downloaded\2022\chunk_1
+2026-06-18 17:13:37,979 | INFO |   bagley | year 2023: 55 scenes -> 1 chunk(s)
+2026-06-18 17:13:39,551 | INFO | Order submitted: https://api.planet.com/compute/ops/orders/v2/e719ef60-e121-4f05-b6b1-d8dfc2901c2e
+2026-06-18 17:13:39,779 | INFO | Order state: queued (https://api.planet.com/compute/ops/orders/v2/e719ef60-e121-4f05-b6b1-d8dfc2901c2e)
+2026-06-18 17:14:10,005 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/e719ef60-e121-4f05-b6b1-d8dfc2901c2e)
+2026-06-18 17:14:40,220 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/e719ef60-e121-4f05-b6b1-d8dfc2901c2e)
+2026-06-18 17:15:10,435 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/e719ef60-e121-4f05-b6b1-d8dfc2901c2e)
+2026-06-18 17:15:40,641 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/e719ef60-e121-4f05-b6b1-d8dfc2901c2e)
+2026-06-18 17:16:10,834 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/e719ef60-e121-4f05-b6b1-d8dfc2901c2e)
+2026-06-18 17:16:41,044 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/e719ef60-e121-4f05-b6b1-d8dfc2901c2e)
+2026-06-18 17:17:11,256 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/e719ef60-e121-4f05-b6b1-d8dfc2901c2e)
+2026-06-18 17:17:41,479 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/e719ef60-e121-4f05-b6b1-d8dfc2901c2e)
+2026-06-18 17:18:11,728 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/e719ef60-e121-4f05-b6b1-d8dfc2901c2e)
+2026-06-18 17:18:41,918 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/e719ef60-e121-4f05-b6b1-d8dfc2901c2e)
+2026-06-18 17:19:12,145 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/e719ef60-e121-4f05-b6b1-d8dfc2901c2e)
+2026-06-18 17:19:42,361 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/e719ef60-e121-4f05-b6b1-d8dfc2901c2e)
+2026-06-18 17:20:13,248 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/e719ef60-e121-4f05-b6b1-d8dfc2901c2e)
+2026-06-18 17:20:43,457 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/e719ef60-e121-4f05-b6b1-d8dfc2901c2e)
+2026-06-18 17:21:13,651 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/e719ef60-e121-4f05-b6b1-d8dfc2901c2e)
+2026-06-18 17:21:43,874 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/e719ef60-e121-4f05-b6b1-d8dfc2901c2e)
+2026-06-18 17:22:14,083 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/e719ef60-e121-4f05-b6b1-d8dfc2901c2e)
+2026-06-18 17:22:44,305 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/e719ef60-e121-4f05-b6b1-d8dfc2901c2e)
+2026-06-18 17:23:14,526 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/e719ef60-e121-4f05-b6b1-d8dfc2901c2e)
+2026-06-18 17:23:45,042 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/e719ef60-e121-4f05-b6b1-d8dfc2901c2e)
+2026-06-18 17:24:15,496 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/e719ef60-e121-4f05-b6b1-d8dfc2901c2e)
+2026-06-18 17:24:45,695 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/e719ef60-e121-4f05-b6b1-d8dfc2901c2e)
+2026-06-18 17:25:15,879 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/e719ef60-e121-4f05-b6b1-d8dfc2901c2e)
+2026-06-18 17:25:46,544 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/e719ef60-e121-4f05-b6b1-d8dfc2901c2e)
+2026-06-18 17:26:16,747 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/e719ef60-e121-4f05-b6b1-d8dfc2901c2e)
+2026-06-18 17:26:46,940 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/e719ef60-e121-4f05-b6b1-d8dfc2901c2e)
+2026-06-18 17:27:17,178 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/e719ef60-e121-4f05-b6b1-d8dfc2901c2e)
+2026-06-18 17:27:47,421 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/e719ef60-e121-4f05-b6b1-d8dfc2901c2e)
+2026-06-18 17:28:17,753 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/e719ef60-e121-4f05-b6b1-d8dfc2901c2e)
+2026-06-18 17:28:47,972 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/e719ef60-e121-4f05-b6b1-d8dfc2901c2e)
+2026-06-18 17:29:18,206 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/e719ef60-e121-4f05-b6b1-d8dfc2901c2e)
+2026-06-18 17:29:48,405 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/e719ef60-e121-4f05-b6b1-d8dfc2901c2e)
+2026-06-18 17:30:18,607 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/e719ef60-e121-4f05-b6b1-d8dfc2901c2e)
+2026-06-18 17:30:48,821 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/e719ef60-e121-4f05-b6b1-d8dfc2901c2e)
+2026-06-18 17:31:19,027 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/e719ef60-e121-4f05-b6b1-d8dfc2901c2e)
+2026-06-18 17:31:49,263 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/e719ef60-e121-4f05-b6b1-d8dfc2901c2e)
+2026-06-18 17:32:19,482 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/e719ef60-e121-4f05-b6b1-d8dfc2901c2e)
+2026-06-18 17:32:49,874 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/e719ef60-e121-4f05-b6b1-d8dfc2901c2e)
+2026-06-18 17:33:20,420 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/e719ef60-e121-4f05-b6b1-d8dfc2901c2e)
+2026-06-18 17:33:51,035 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/e719ef60-e121-4f05-b6b1-d8dfc2901c2e)
+2026-06-18 17:34:21,733 | INFO | Order state: success (https://api.planet.com/compute/ops/orders/v2/e719ef60-e121-4f05-b6b1-d8dfc2901c2e)
+2026-06-18 17:34:22,114 | WARNING | Connection pool is full, discarding connection: api.planet.com. Connection pool size: 10
+2026-06-18 17:34:22,123 | WARNING | Connection pool is full, discarding connection: api.planet.com. Connection pool size: 10
+2026-06-18 17:34:30,756 | WARNING | Connection pool is full, discarding connection: link.planet.com. Connection pool size: 10
+2026-06-18 17:34:31,660 | WARNING | Connection pool is full, discarding connection: link.planet.com. Connection pool size: 10
+2026-06-18 17:34:34,426 | INFO | Downloaded 221/221 files -> C:/Users/reub0539/work/Planet_LSP/data/wytham_test\bagley\downloaded\2023\chunk_1
+2026-06-18 17:34:34,489 | INFO | Deleted temp download dir: C:/Users/reub0539/work/Planet_LSP/data/wytham_test\bagley\downloaded\2023\chunk_1
+2026-06-18 17:34:34,492 | INFO |   bagley | year 2024: 61 scenes -> 1 chunk(s)
+2026-06-18 17:34:35,942 | INFO | Order submitted: https://api.planet.com/compute/ops/orders/v2/5e179403-1f11-42c7-8358-596cd6c1d9d4
+2026-06-18 17:34:36,224 | INFO | Order state: queued (https://api.planet.com/compute/ops/orders/v2/5e179403-1f11-42c7-8358-596cd6c1d9d4)
+2026-06-18 17:35:06,454 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/5e179403-1f11-42c7-8358-596cd6c1d9d4)
+2026-06-18 17:35:36,659 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/5e179403-1f11-42c7-8358-596cd6c1d9d4)
+2026-06-18 17:36:06,868 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/5e179403-1f11-42c7-8358-596cd6c1d9d4)
+2026-06-18 17:36:37,115 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/5e179403-1f11-42c7-8358-596cd6c1d9d4)
+2026-06-18 17:37:07,330 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/5e179403-1f11-42c7-8358-596cd6c1d9d4)
+2026-06-18 17:37:37,553 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/5e179403-1f11-42c7-8358-596cd6c1d9d4)
+2026-06-18 17:38:07,760 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/5e179403-1f11-42c7-8358-596cd6c1d9d4)
+2026-06-18 17:38:37,988 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/5e179403-1f11-42c7-8358-596cd6c1d9d4)
+2026-06-18 17:39:08,217 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/5e179403-1f11-42c7-8358-596cd6c1d9d4)
+2026-06-18 17:39:38,466 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/5e179403-1f11-42c7-8358-596cd6c1d9d4)
+2026-06-18 17:40:08,671 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/5e179403-1f11-42c7-8358-596cd6c1d9d4)
+2026-06-18 17:40:38,881 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/5e179403-1f11-42c7-8358-596cd6c1d9d4)
+2026-06-18 17:41:09,219 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/5e179403-1f11-42c7-8358-596cd6c1d9d4)
+2026-06-18 17:41:39,429 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/5e179403-1f11-42c7-8358-596cd6c1d9d4)
+2026-06-18 17:42:09,654 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/5e179403-1f11-42c7-8358-596cd6c1d9d4)
+2026-06-18 17:42:39,859 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/5e179403-1f11-42c7-8358-596cd6c1d9d4)
+2026-06-18 17:43:10,149 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/5e179403-1f11-42c7-8358-596cd6c1d9d4)
+2026-06-18 17:43:40,366 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/5e179403-1f11-42c7-8358-596cd6c1d9d4)
+2026-06-18 17:44:10,586 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/5e179403-1f11-42c7-8358-596cd6c1d9d4)
+2026-06-18 17:44:40,786 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/5e179403-1f11-42c7-8358-596cd6c1d9d4)
+2026-06-18 17:45:11,065 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/5e179403-1f11-42c7-8358-596cd6c1d9d4)
+2026-06-18 17:45:41,279 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/5e179403-1f11-42c7-8358-596cd6c1d9d4)
+2026-06-18 17:46:11,500 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/5e179403-1f11-42c7-8358-596cd6c1d9d4)
+2026-06-18 17:46:41,785 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/5e179403-1f11-42c7-8358-596cd6c1d9d4)
+2026-06-18 17:47:12,410 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/5e179403-1f11-42c7-8358-596cd6c1d9d4)
+2026-06-18 17:47:42,621 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/5e179403-1f11-42c7-8358-596cd6c1d9d4)
+2026-06-18 17:48:12,820 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/5e179403-1f11-42c7-8358-596cd6c1d9d4)
+2026-06-18 17:48:43,042 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/5e179403-1f11-42c7-8358-596cd6c1d9d4)
+2026-06-18 17:49:13,250 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/5e179403-1f11-42c7-8358-596cd6c1d9d4)
+2026-06-18 17:49:43,503 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/5e179403-1f11-42c7-8358-596cd6c1d9d4)
+2026-06-18 17:50:13,712 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/5e179403-1f11-42c7-8358-596cd6c1d9d4)
+2026-06-18 17:50:43,912 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/5e179403-1f11-42c7-8358-596cd6c1d9d4)
+2026-06-18 17:51:14,097 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/5e179403-1f11-42c7-8358-596cd6c1d9d4)
+2026-06-18 17:51:44,325 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/5e179403-1f11-42c7-8358-596cd6c1d9d4)
+2026-06-18 17:52:14,790 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/5e179403-1f11-42c7-8358-596cd6c1d9d4)
+2026-06-18 17:52:45,336 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/5e179403-1f11-42c7-8358-596cd6c1d9d4)
+2026-06-18 17:53:16,122 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/5e179403-1f11-42c7-8358-596cd6c1d9d4)
+2026-06-18 17:53:46,843 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/5e179403-1f11-42c7-8358-596cd6c1d9d4)
+2026-06-18 17:54:17,477 | INFO | Order state: success (https://api.planet.com/compute/ops/orders/v2/5e179403-1f11-42c7-8358-596cd6c1d9d4)
+2026-06-18 17:54:17,764 | WARNING | Connection pool is full, discarding connection: api.planet.com. Connection pool size: 10
+2026-06-18 17:54:19,844 | WARNING | Connection pool is full, discarding connection: api.planet.com. Connection pool size: 10
+2026-06-18 17:54:29,323 | WARNING | Connection pool is full, discarding connection: link.planet.com. Connection pool size: 10
+2026-06-18 17:54:34,816 | INFO | Downloaded 245/245 files -> C:/Users/reub0539/work/Planet_LSP/data/wytham_test\bagley\downloaded\2024\chunk_1
+2026-06-18 17:54:34,890 | INFO | Deleted temp download dir: C:/Users/reub0539/work/Planet_LSP/data/wytham_test\bagley\downloaded\2024\chunk_1
+2026-06-18 17:54:34,890 | INFO |   bagley | year 2025: 90 scenes -> 1 chunk(s)
+2026-06-18 17:54:36,432 | INFO | Order submitted: https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934
+2026-06-18 17:54:36,624 | INFO | Order state: queued (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 17:55:06,986 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 17:55:37,186 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 17:56:07,410 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 17:56:37,735 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 17:57:07,936 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 17:57:38,159 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 17:58:08,486 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 17:58:38,740 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 17:59:08,951 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 17:59:39,181 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:00:09,393 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:00:39,593 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:01:09,811 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:01:40,166 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:02:10,400 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:02:40,604 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:03:10,803 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:03:41,014 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:04:11,219 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:04:41,436 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:05:11,791 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:05:42,026 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:06:12,237 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:06:42,473 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:07:12,688 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:07:42,890 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:08:13,093 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:08:43,326 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:09:13,561 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:09:43,768 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:10:13,998 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:10:44,216 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:11:14,640 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:11:44,888 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:12:15,092 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:12:45,297 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:13:15,538 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:13:45,736 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:14:15,944 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:14:46,163 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:15:16,482 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:15:46,696 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:16:16,896 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:16:47,497 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:17:17,755 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:17:47,952 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:18:18,184 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:18:48,599 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:19:18,812 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:19:49,026 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:20:19,240 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:20:49,447 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:21:19,966 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:21:50,436 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:22:20,652 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:22:50,860 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:23:21,076 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:23:51,297 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:24:21,514 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:24:52,113 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:25:22,327 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:25:52,552 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:26:22,762 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:26:52,976 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:27:23,179 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:27:53,399 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:28:23,614 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:28:53,830 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:29:24,021 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:29:54,236 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:30:24,446 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:30:54,665 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:31:24,876 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:31:55,091 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:32:25,364 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:32:55,666 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:33:25,971 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:33:56,331 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:34:26,861 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:34:57,233 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:35:27,652 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:35:58,328 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:36:29,036 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:36:59,725 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:37:30,433 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:38:01,225 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:38:32,019 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:39:03,126 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:39:33,972 | INFO | Order state: success (https://api.planet.com/compute/ops/orders/v2/0ac5969a-0c63-4349-9034-33b8eeb9c934)
+2026-06-18 18:39:34,255 | WARNING | Connection pool is full, discarding connection: api.planet.com. Connection pool size: 10
+2026-06-18 18:39:34,782 | WARNING | Connection pool is full, discarding connection: api.planet.com. Connection pool size: 10
+2026-06-18 18:39:37,446 | WARNING | Connection pool is full, discarding connection: link.planet.com. Connection pool size: 10
+2026-06-18 18:39:39,595 | WARNING | Connection pool is full, discarding connection: link.planet.com. Connection pool size: 10
+2026-06-18 18:39:56,372 | INFO | Downloaded 361/361 files -> C:/Users/reub0539/work/Planet_LSP/data/wytham_test\bagley\downloaded\2025\chunk_1
+2026-06-18 18:39:56,479 | INFO | Deleted temp download dir: C:/Users/reub0539/work/Planet_LSP/data/wytham_test\bagley\downloaded\2025\chunk_1
+2026-06-18 18:39:56,480 | INFO | Polygon wytham: 696 scenes across 8 years
+2026-06-18 18:39:56,481 | INFO |   wytham | year 2018: 76 scenes -> 1 chunk(s)
+2026-06-18 18:39:58,700 | INFO | Order submitted: https://api.planet.com/compute/ops/orders/v2/2b53385c-b8c8-4868-b3f7-9d93df518389
+2026-06-18 18:39:58,912 | INFO | Order state: queued (https://api.planet.com/compute/ops/orders/v2/2b53385c-b8c8-4868-b3f7-9d93df518389)
+2026-06-18 18:40:29,111 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/2b53385c-b8c8-4868-b3f7-9d93df518389)
+2026-06-18 18:40:59,298 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/2b53385c-b8c8-4868-b3f7-9d93df518389)
+2026-06-18 18:41:29,533 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/2b53385c-b8c8-4868-b3f7-9d93df518389)
+2026-06-18 18:41:59,782 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/2b53385c-b8c8-4868-b3f7-9d93df518389)
+2026-06-18 18:42:29,981 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/2b53385c-b8c8-4868-b3f7-9d93df518389)
+2026-06-18 18:43:00,197 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/2b53385c-b8c8-4868-b3f7-9d93df518389)
+2026-06-18 18:43:30,613 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/2b53385c-b8c8-4868-b3f7-9d93df518389)
+2026-06-18 18:44:00,866 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/2b53385c-b8c8-4868-b3f7-9d93df518389)
+2026-06-18 18:44:31,078 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/2b53385c-b8c8-4868-b3f7-9d93df518389)
+2026-06-18 18:45:01,831 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/2b53385c-b8c8-4868-b3f7-9d93df518389)
+2026-06-18 18:45:32,481 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/2b53385c-b8c8-4868-b3f7-9d93df518389)
+2026-06-18 18:46:03,164 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/2b53385c-b8c8-4868-b3f7-9d93df518389)
+2026-06-18 18:46:33,822 | INFO | Order state: success (https://api.planet.com/compute/ops/orders/v2/2b53385c-b8c8-4868-b3f7-9d93df518389)
+2026-06-18 18:46:34,115 | WARNING | Connection pool is full, discarding connection: api.planet.com. Connection pool size: 10
+2026-06-18 18:46:34,121 | WARNING | Connection pool is full, discarding connection: api.planet.com. Connection pool size: 10
+2026-06-18 18:46:47,538 | WARNING | Connection pool is full, discarding connection: link.planet.com. Connection pool size: 10
+2026-06-18 18:46:47,884 | WARNING | Connection pool is full, discarding connection: link.planet.com. Connection pool size: 10
+2026-06-18 18:46:48,395 | INFO | Downloaded 291/291 files -> C:/Users/reub0539/work/Planet_LSP/data/wytham_test\wytham\downloaded\2018\chunk_1
+2026-06-18 18:46:48,498 | INFO | Deleted temp download dir: C:/Users/reub0539/work/Planet_LSP/data/wytham_test\wytham\downloaded\2018\chunk_1
+2026-06-18 18:46:48,498 | INFO |   wytham | year 2019: 79 scenes -> 1 chunk(s)
+2026-06-18 18:46:50,356 | INFO | Order submitted: https://api.planet.com/compute/ops/orders/v2/3a93911a-868a-4e0e-bf19-1ca0214d89d9
+2026-06-18 18:46:50,576 | INFO | Order state: queued (https://api.planet.com/compute/ops/orders/v2/3a93911a-868a-4e0e-bf19-1ca0214d89d9)
+2026-06-18 18:47:21,262 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3a93911a-868a-4e0e-bf19-1ca0214d89d9)
+2026-06-18 18:47:51,469 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3a93911a-868a-4e0e-bf19-1ca0214d89d9)
+2026-06-18 18:48:21,668 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3a93911a-868a-4e0e-bf19-1ca0214d89d9)
+2026-06-18 18:48:51,955 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3a93911a-868a-4e0e-bf19-1ca0214d89d9)
+2026-06-18 18:49:22,167 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3a93911a-868a-4e0e-bf19-1ca0214d89d9)
+2026-06-18 18:49:52,380 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3a93911a-868a-4e0e-bf19-1ca0214d89d9)
+2026-06-18 18:50:22,581 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3a93911a-868a-4e0e-bf19-1ca0214d89d9)
+2026-06-18 18:50:52,793 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3a93911a-868a-4e0e-bf19-1ca0214d89d9)
+2026-06-18 18:51:23,127 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3a93911a-868a-4e0e-bf19-1ca0214d89d9)
+2026-06-18 18:51:53,343 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3a93911a-868a-4e0e-bf19-1ca0214d89d9)
+2026-06-18 18:52:23,537 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3a93911a-868a-4e0e-bf19-1ca0214d89d9)
+2026-06-18 18:52:53,741 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3a93911a-868a-4e0e-bf19-1ca0214d89d9)
+2026-06-18 18:53:24,000 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3a93911a-868a-4e0e-bf19-1ca0214d89d9)
+2026-06-18 18:53:54,707 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3a93911a-868a-4e0e-bf19-1ca0214d89d9)
+2026-06-18 18:54:25,392 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3a93911a-868a-4e0e-bf19-1ca0214d89d9)
+2026-06-18 18:54:56,132 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3a93911a-868a-4e0e-bf19-1ca0214d89d9)
+2026-06-18 18:55:26,877 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3a93911a-868a-4e0e-bf19-1ca0214d89d9)
+2026-06-18 18:55:57,596 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/3a93911a-868a-4e0e-bf19-1ca0214d89d9)
+2026-06-18 18:56:28,315 | INFO | Order state: success (https://api.planet.com/compute/ops/orders/v2/3a93911a-868a-4e0e-bf19-1ca0214d89d9)
+2026-06-18 18:56:28,607 | WARNING | Connection pool is full, discarding connection: api.planet.com. Connection pool size: 10
+2026-06-18 18:56:31,597 | WARNING | Connection pool is full, discarding connection: api.planet.com. Connection pool size: 10
+2026-06-18 18:56:44,012 | WARNING | Connection pool is full, discarding connection: link.planet.com. Connection pool size: 10
+2026-06-18 18:56:50,131 | INFO | Downloaded 317/317 files -> C:/Users/reub0539/work/Planet_LSP/data/wytham_test\wytham\downloaded\2019\chunk_1
+2026-06-18 18:56:50,258 | INFO | Deleted temp download dir: C:/Users/reub0539/work/Planet_LSP/data/wytham_test\wytham\downloaded\2019\chunk_1
+2026-06-18 18:56:50,260 | INFO |   wytham | year 2020: 137 scenes -> 1 chunk(s)
+2026-06-18 18:56:51,945 | INFO | Order submitted: https://api.planet.com/compute/ops/orders/v2/239ddd7d-3178-4c7d-af0d-6ab7e6b0813f
+2026-06-18 18:56:52,158 | INFO | Order state: queued (https://api.planet.com/compute/ops/orders/v2/239ddd7d-3178-4c7d-af0d-6ab7e6b0813f)
+2026-06-18 18:57:22,392 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/239ddd7d-3178-4c7d-af0d-6ab7e6b0813f)
+2026-06-18 18:57:52,608 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/239ddd7d-3178-4c7d-af0d-6ab7e6b0813f)
+2026-06-18 18:58:22,839 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/239ddd7d-3178-4c7d-af0d-6ab7e6b0813f)
+2026-06-18 18:58:53,103 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/239ddd7d-3178-4c7d-af0d-6ab7e6b0813f)
+2026-06-18 18:59:23,349 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/239ddd7d-3178-4c7d-af0d-6ab7e6b0813f)
+2026-06-18 18:59:53,813 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/239ddd7d-3178-4c7d-af0d-6ab7e6b0813f)
+2026-06-18 19:00:24,040 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/239ddd7d-3178-4c7d-af0d-6ab7e6b0813f)
+2026-06-18 19:00:54,260 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/239ddd7d-3178-4c7d-af0d-6ab7e6b0813f)
+2026-06-18 19:01:24,652 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/239ddd7d-3178-4c7d-af0d-6ab7e6b0813f)
+2026-06-18 19:01:54,849 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/239ddd7d-3178-4c7d-af0d-6ab7e6b0813f)
+2026-06-18 19:02:25,078 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/239ddd7d-3178-4c7d-af0d-6ab7e6b0813f)
+2026-06-18 19:02:55,368 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/239ddd7d-3178-4c7d-af0d-6ab7e6b0813f)
+2026-06-18 19:03:25,652 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/239ddd7d-3178-4c7d-af0d-6ab7e6b0813f)
+2026-06-18 19:03:55,849 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/239ddd7d-3178-4c7d-af0d-6ab7e6b0813f)
+2026-06-18 19:04:26,068 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/239ddd7d-3178-4c7d-af0d-6ab7e6b0813f)
+2026-06-18 19:04:56,258 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/239ddd7d-3178-4c7d-af0d-6ab7e6b0813f)
+2026-06-18 19:05:26,808 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/239ddd7d-3178-4c7d-af0d-6ab7e6b0813f)
+2026-06-18 19:05:57,017 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/239ddd7d-3178-4c7d-af0d-6ab7e6b0813f)
+2026-06-18 19:06:27,232 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/239ddd7d-3178-4c7d-af0d-6ab7e6b0813f)
+2026-06-18 19:06:57,493 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/239ddd7d-3178-4c7d-af0d-6ab7e6b0813f)
+2026-06-18 19:07:27,741 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/239ddd7d-3178-4c7d-af0d-6ab7e6b0813f)
+2026-06-18 19:07:57,962 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/239ddd7d-3178-4c7d-af0d-6ab7e6b0813f)
+2026-06-18 19:08:28,177 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/239ddd7d-3178-4c7d-af0d-6ab7e6b0813f)
+2026-06-18 19:08:58,404 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/239ddd7d-3178-4c7d-af0d-6ab7e6b0813f)
+2026-06-18 19:09:28,611 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/239ddd7d-3178-4c7d-af0d-6ab7e6b0813f)
+2026-06-18 19:09:59,873 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/239ddd7d-3178-4c7d-af0d-6ab7e6b0813f)
+2026-06-18 19:10:31,119 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/239ddd7d-3178-4c7d-af0d-6ab7e6b0813f)
+2026-06-18 19:11:02,539 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/239ddd7d-3178-4c7d-af0d-6ab7e6b0813f)
+2026-06-18 19:11:33,782 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/239ddd7d-3178-4c7d-af0d-6ab7e6b0813f)
+2026-06-18 19:12:04,969 | INFO | Order state: success (https://api.planet.com/compute/ops/orders/v2/239ddd7d-3178-4c7d-af0d-6ab7e6b0813f)
+2026-06-18 19:12:06,807 | WARNING | Connection pool is full, discarding connection: api.planet.com. Connection pool size: 10
+2026-06-18 19:12:07,398 | WARNING | Connection pool is full, discarding connection: api.planet.com. Connection pool size: 10
+2026-06-18 19:12:31,823 | WARNING | Connection pool is full, discarding connection: link.planet.com. Connection pool size: 10
+2026-06-18 19:12:31,848 | INFO | Downloaded 549/549 files -> C:/Users/reub0539/work/Planet_LSP/data/wytham_test\wytham\downloaded\2020\chunk_1
+2026-06-18 19:12:32,064 | INFO | Deleted temp download dir: C:/Users/reub0539/work/Planet_LSP/data/wytham_test\wytham\downloaded\2020\chunk_1
+2026-06-18 19:12:32,069 | INFO |   wytham | year 2021: 79 scenes -> 1 chunk(s)
+2026-06-18 19:12:34,342 | INFO | Order submitted: https://api.planet.com/compute/ops/orders/v2/ed296855-d2ea-4fe1-a292-0599ab1cb5ca
+2026-06-18 19:12:34,556 | INFO | Order state: queued (https://api.planet.com/compute/ops/orders/v2/ed296855-d2ea-4fe1-a292-0599ab1cb5ca)
+2026-06-18 19:13:04,774 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/ed296855-d2ea-4fe1-a292-0599ab1cb5ca)
+2026-06-18 19:13:34,992 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/ed296855-d2ea-4fe1-a292-0599ab1cb5ca)
+2026-06-18 19:14:05,192 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/ed296855-d2ea-4fe1-a292-0599ab1cb5ca)
+2026-06-18 19:14:35,419 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/ed296855-d2ea-4fe1-a292-0599ab1cb5ca)
+2026-06-18 19:15:05,637 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/ed296855-d2ea-4fe1-a292-0599ab1cb5ca)
+2026-06-18 19:15:35,842 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/ed296855-d2ea-4fe1-a292-0599ab1cb5ca)
+2026-06-18 19:16:06,312 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/ed296855-d2ea-4fe1-a292-0599ab1cb5ca)
+2026-06-18 19:16:36,531 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/ed296855-d2ea-4fe1-a292-0599ab1cb5ca)
+2026-06-18 19:17:06,725 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/ed296855-d2ea-4fe1-a292-0599ab1cb5ca)
+2026-06-18 19:17:36,941 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/ed296855-d2ea-4fe1-a292-0599ab1cb5ca)
+2026-06-18 19:18:07,145 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/ed296855-d2ea-4fe1-a292-0599ab1cb5ca)
+2026-06-18 19:18:37,364 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/ed296855-d2ea-4fe1-a292-0599ab1cb5ca)
+2026-06-18 19:19:07,587 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/ed296855-d2ea-4fe1-a292-0599ab1cb5ca)
+2026-06-18 19:19:37,851 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/ed296855-d2ea-4fe1-a292-0599ab1cb5ca)
+2026-06-18 19:20:08,063 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/ed296855-d2ea-4fe1-a292-0599ab1cb5ca)
+2026-06-18 19:20:38,521 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/ed296855-d2ea-4fe1-a292-0599ab1cb5ca)
+2026-06-18 19:21:08,747 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/ed296855-d2ea-4fe1-a292-0599ab1cb5ca)
+2026-06-18 19:21:38,956 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/ed296855-d2ea-4fe1-a292-0599ab1cb5ca)
+2026-06-18 19:22:09,177 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/ed296855-d2ea-4fe1-a292-0599ab1cb5ca)
+2026-06-18 19:22:39,385 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/ed296855-d2ea-4fe1-a292-0599ab1cb5ca)
+2026-06-18 19:23:09,606 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/ed296855-d2ea-4fe1-a292-0599ab1cb5ca)
+2026-06-18 19:23:39,810 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/ed296855-d2ea-4fe1-a292-0599ab1cb5ca)
+2026-06-18 19:24:10,015 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/ed296855-d2ea-4fe1-a292-0599ab1cb5ca)
+2026-06-18 19:24:40,212 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/ed296855-d2ea-4fe1-a292-0599ab1cb5ca)
+2026-06-18 19:25:10,441 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/ed296855-d2ea-4fe1-a292-0599ab1cb5ca)
+2026-06-18 19:25:40,646 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/ed296855-d2ea-4fe1-a292-0599ab1cb5ca)
+2026-06-18 19:26:10,862 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/ed296855-d2ea-4fe1-a292-0599ab1cb5ca)
+2026-06-18 19:26:41,124 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/ed296855-d2ea-4fe1-a292-0599ab1cb5ca)
+2026-06-18 19:27:11,317 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/ed296855-d2ea-4fe1-a292-0599ab1cb5ca)
+2026-06-18 19:27:41,852 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/ed296855-d2ea-4fe1-a292-0599ab1cb5ca)
+2026-06-18 19:28:12,632 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/ed296855-d2ea-4fe1-a292-0599ab1cb5ca)
+2026-06-18 19:28:43,346 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/ed296855-d2ea-4fe1-a292-0599ab1cb5ca)
+2026-06-18 19:29:14,046 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/ed296855-d2ea-4fe1-a292-0599ab1cb5ca)
+2026-06-18 19:29:44,727 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/ed296855-d2ea-4fe1-a292-0599ab1cb5ca)
+2026-06-18 19:30:15,449 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/ed296855-d2ea-4fe1-a292-0599ab1cb5ca)
+2026-06-18 19:30:46,202 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/ed296855-d2ea-4fe1-a292-0599ab1cb5ca)
+2026-06-18 19:31:17,103 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/ed296855-d2ea-4fe1-a292-0599ab1cb5ca)
+2026-06-18 19:31:47,806 | INFO | Order state: success (https://api.planet.com/compute/ops/orders/v2/ed296855-d2ea-4fe1-a292-0599ab1cb5ca)
+2026-06-18 19:31:48,207 | WARNING | Connection pool is full, discarding connection: api.planet.com. Connection pool size: 10
+2026-06-18 19:31:50,303 | WARNING | Connection pool is full, discarding connection: api.planet.com. Connection pool size: 10
+2026-06-18 19:32:03,524 | WARNING | Connection pool is full, discarding connection: link.planet.com. Connection pool size: 10
+2026-06-18 19:32:03,571 | WARNING | Connection pool is full, discarding connection: link.planet.com. Connection pool size: 10
+2026-06-18 19:32:07,968 | INFO | Downloaded 317/317 files -> C:/Users/reub0539/work/Planet_LSP/data/wytham_test\wytham\downloaded\2021\chunk_1
+2026-06-18 19:32:08,091 | INFO | Deleted temp download dir: C:/Users/reub0539/work/Planet_LSP/data/wytham_test\wytham\downloaded\2021\chunk_1
+2026-06-18 19:32:08,091 | INFO |   wytham | year 2022: 73 scenes -> 1 chunk(s)
+2026-06-18 19:32:10,444 | INFO | Order submitted: https://api.planet.com/compute/ops/orders/v2/1b513c44-59f6-4c64-8c5f-ef06dd028ce7
+2026-06-18 19:32:10,656 | INFO | Order state: queued (https://api.planet.com/compute/ops/orders/v2/1b513c44-59f6-4c64-8c5f-ef06dd028ce7)
+2026-06-18 19:32:40,904 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/1b513c44-59f6-4c64-8c5f-ef06dd028ce7)
+2026-06-18 19:33:11,130 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/1b513c44-59f6-4c64-8c5f-ef06dd028ce7)
+2026-06-18 19:33:41,371 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/1b513c44-59f6-4c64-8c5f-ef06dd028ce7)
+2026-06-18 19:34:11,615 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/1b513c44-59f6-4c64-8c5f-ef06dd028ce7)
+2026-06-18 19:34:41,799 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/1b513c44-59f6-4c64-8c5f-ef06dd028ce7)
+2026-06-18 19:35:12,064 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/1b513c44-59f6-4c64-8c5f-ef06dd028ce7)
+2026-06-18 19:35:42,265 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/1b513c44-59f6-4c64-8c5f-ef06dd028ce7)
+2026-06-18 19:36:12,487 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/1b513c44-59f6-4c64-8c5f-ef06dd028ce7)
+2026-06-18 19:36:42,683 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/1b513c44-59f6-4c64-8c5f-ef06dd028ce7)
+2026-06-18 19:37:12,922 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/1b513c44-59f6-4c64-8c5f-ef06dd028ce7)
+2026-06-18 19:37:43,183 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/1b513c44-59f6-4c64-8c5f-ef06dd028ce7)
+2026-06-18 19:38:13,403 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/1b513c44-59f6-4c64-8c5f-ef06dd028ce7)
+2026-06-18 19:38:43,622 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/1b513c44-59f6-4c64-8c5f-ef06dd028ce7)
+2026-06-18 19:39:13,871 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/1b513c44-59f6-4c64-8c5f-ef06dd028ce7)
+2026-06-18 19:39:44,080 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/1b513c44-59f6-4c64-8c5f-ef06dd028ce7)
+2026-06-18 19:40:14,289 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/1b513c44-59f6-4c64-8c5f-ef06dd028ce7)
+2026-06-18 19:40:44,503 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/1b513c44-59f6-4c64-8c5f-ef06dd028ce7)
+2026-06-18 19:41:14,719 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/1b513c44-59f6-4c64-8c5f-ef06dd028ce7)
+2026-06-18 19:41:44,912 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/1b513c44-59f6-4c64-8c5f-ef06dd028ce7)
+2026-06-18 19:42:15,121 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/1b513c44-59f6-4c64-8c5f-ef06dd028ce7)
+2026-06-18 19:42:45,333 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/1b513c44-59f6-4c64-8c5f-ef06dd028ce7)
+2026-06-18 19:43:15,533 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/1b513c44-59f6-4c64-8c5f-ef06dd028ce7)
+2026-06-18 19:43:45,741 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/1b513c44-59f6-4c64-8c5f-ef06dd028ce7)
+2026-06-18 19:44:15,944 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/1b513c44-59f6-4c64-8c5f-ef06dd028ce7)
+2026-06-18 19:44:46,158 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/1b513c44-59f6-4c64-8c5f-ef06dd028ce7)
+2026-06-18 19:45:16,377 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/1b513c44-59f6-4c64-8c5f-ef06dd028ce7)
+2026-06-18 19:45:46,609 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/1b513c44-59f6-4c64-8c5f-ef06dd028ce7)
+2026-06-18 19:46:16,821 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/1b513c44-59f6-4c64-8c5f-ef06dd028ce7)
+2026-06-18 19:46:47,031 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/1b513c44-59f6-4c64-8c5f-ef06dd028ce7)
+2026-06-18 19:47:17,244 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/1b513c44-59f6-4c64-8c5f-ef06dd028ce7)
+2026-06-18 19:47:47,748 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/1b513c44-59f6-4c64-8c5f-ef06dd028ce7)
+2026-06-18 19:48:17,978 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/1b513c44-59f6-4c64-8c5f-ef06dd028ce7)
+2026-06-18 19:48:48,186 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/1b513c44-59f6-4c64-8c5f-ef06dd028ce7)
+2026-06-18 19:49:18,636 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/1b513c44-59f6-4c64-8c5f-ef06dd028ce7)
+2026-06-18 19:49:48,895 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/1b513c44-59f6-4c64-8c5f-ef06dd028ce7)
+2026-06-18 19:50:19,229 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/1b513c44-59f6-4c64-8c5f-ef06dd028ce7)
+2026-06-18 19:50:49,455 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/1b513c44-59f6-4c64-8c5f-ef06dd028ce7)
+2026-06-18 19:51:20,152 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/1b513c44-59f6-4c64-8c5f-ef06dd028ce7)
+2026-06-18 19:51:50,825 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/1b513c44-59f6-4c64-8c5f-ef06dd028ce7)
+2026-06-18 19:52:21,518 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/1b513c44-59f6-4c64-8c5f-ef06dd028ce7)
+2026-06-18 19:52:52,172 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/1b513c44-59f6-4c64-8c5f-ef06dd028ce7)
+2026-06-18 19:53:22,821 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/1b513c44-59f6-4c64-8c5f-ef06dd028ce7)
+2026-06-18 19:53:53,480 | INFO | Order state: success (https://api.planet.com/compute/ops/orders/v2/1b513c44-59f6-4c64-8c5f-ef06dd028ce7)
+2026-06-18 19:53:53,769 | WARNING | Connection pool is full, discarding connection: api.planet.com. Connection pool size: 10
+2026-06-18 19:53:53,804 | WARNING | Connection pool is full, discarding connection: api.planet.com. Connection pool size: 10
+2026-06-18 19:54:07,392 | WARNING | Connection pool is full, discarding connection: link.planet.com. Connection pool size: 10
+2026-06-18 19:54:07,482 | WARNING | Connection pool is full, discarding connection: link.planet.com. Connection pool size: 10
+2026-06-18 19:54:10,487 | INFO | Downloaded 293/293 files -> C:/Users/reub0539/work/Planet_LSP/data/wytham_test\wytham\downloaded\2022\chunk_1
+2026-06-18 19:54:10,603 | INFO | Deleted temp download dir: C:/Users/reub0539/work/Planet_LSP/data/wytham_test\wytham\downloaded\2022\chunk_1
+2026-06-18 19:54:10,603 | INFO |   wytham | year 2023: 70 scenes -> 1 chunk(s)
+2026-06-18 19:54:12,117 | INFO | Order submitted: https://api.planet.com/compute/ops/orders/v2/757b0ab9-c49f-417d-89ff-88fccd2c3c4e
+2026-06-18 19:54:12,384 | INFO | Order state: queued (https://api.planet.com/compute/ops/orders/v2/757b0ab9-c49f-417d-89ff-88fccd2c3c4e)
+2026-06-18 19:54:42,600 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/757b0ab9-c49f-417d-89ff-88fccd2c3c4e)
+2026-06-18 19:55:12,817 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/757b0ab9-c49f-417d-89ff-88fccd2c3c4e)
+2026-06-18 19:55:43,037 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/757b0ab9-c49f-417d-89ff-88fccd2c3c4e)
+2026-06-18 19:56:13,267 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/757b0ab9-c49f-417d-89ff-88fccd2c3c4e)
+2026-06-18 19:56:43,511 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/757b0ab9-c49f-417d-89ff-88fccd2c3c4e)
+2026-06-18 19:57:13,735 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/757b0ab9-c49f-417d-89ff-88fccd2c3c4e)
+2026-06-18 19:57:43,945 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/757b0ab9-c49f-417d-89ff-88fccd2c3c4e)
+2026-06-18 19:58:14,140 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/757b0ab9-c49f-417d-89ff-88fccd2c3c4e)
+2026-06-18 19:58:44,431 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/757b0ab9-c49f-417d-89ff-88fccd2c3c4e)
+2026-06-18 19:59:14,634 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/757b0ab9-c49f-417d-89ff-88fccd2c3c4e)
+2026-06-18 19:59:45,272 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/757b0ab9-c49f-417d-89ff-88fccd2c3c4e)
+2026-06-18 20:00:15,486 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/757b0ab9-c49f-417d-89ff-88fccd2c3c4e)
+2026-06-18 20:00:45,713 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/757b0ab9-c49f-417d-89ff-88fccd2c3c4e)
+2026-06-18 20:01:15,916 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/757b0ab9-c49f-417d-89ff-88fccd2c3c4e)
+2026-06-18 20:01:46,134 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/757b0ab9-c49f-417d-89ff-88fccd2c3c4e)
+2026-06-18 20:02:16,470 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/757b0ab9-c49f-417d-89ff-88fccd2c3c4e)
+2026-06-18 20:02:46,648 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/757b0ab9-c49f-417d-89ff-88fccd2c3c4e)
+2026-06-18 20:03:16,861 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/757b0ab9-c49f-417d-89ff-88fccd2c3c4e)
+2026-06-18 20:03:47,095 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/757b0ab9-c49f-417d-89ff-88fccd2c3c4e)
+2026-06-18 20:04:17,317 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/757b0ab9-c49f-417d-89ff-88fccd2c3c4e)
+2026-06-18 20:04:47,729 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/757b0ab9-c49f-417d-89ff-88fccd2c3c4e)
+2026-06-18 20:05:17,967 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/757b0ab9-c49f-417d-89ff-88fccd2c3c4e)
+2026-06-18 20:05:48,883 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/757b0ab9-c49f-417d-89ff-88fccd2c3c4e)
+2026-06-18 20:06:19,328 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/757b0ab9-c49f-417d-89ff-88fccd2c3c4e)
+2026-06-18 20:06:49,520 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/757b0ab9-c49f-417d-89ff-88fccd2c3c4e)
+2026-06-18 20:07:19,739 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/757b0ab9-c49f-417d-89ff-88fccd2c3c4e)
+2026-06-18 20:07:49,950 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/757b0ab9-c49f-417d-89ff-88fccd2c3c4e)
+2026-06-18 20:08:20,163 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/757b0ab9-c49f-417d-89ff-88fccd2c3c4e)
+2026-06-18 20:08:50,354 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/757b0ab9-c49f-417d-89ff-88fccd2c3c4e)
+2026-06-18 20:09:20,554 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/757b0ab9-c49f-417d-89ff-88fccd2c3c4e)
+2026-06-18 20:09:50,766 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/757b0ab9-c49f-417d-89ff-88fccd2c3c4e)
+2026-06-18 20:10:20,984 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/757b0ab9-c49f-417d-89ff-88fccd2c3c4e)
+2026-06-18 20:10:51,213 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/757b0ab9-c49f-417d-89ff-88fccd2c3c4e)
+2026-06-18 20:11:21,434 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/757b0ab9-c49f-417d-89ff-88fccd2c3c4e)
+2026-06-18 20:11:51,640 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/757b0ab9-c49f-417d-89ff-88fccd2c3c4e)
+2026-06-18 20:12:21,836 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/757b0ab9-c49f-417d-89ff-88fccd2c3c4e)
+2026-06-18 20:12:52,043 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/757b0ab9-c49f-417d-89ff-88fccd2c3c4e)
+2026-06-18 20:13:22,328 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/757b0ab9-c49f-417d-89ff-88fccd2c3c4e)
+2026-06-18 20:13:52,700 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/757b0ab9-c49f-417d-89ff-88fccd2c3c4e)
+2026-06-18 20:14:23,043 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/757b0ab9-c49f-417d-89ff-88fccd2c3c4e)
+2026-06-18 20:14:53,425 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/757b0ab9-c49f-417d-89ff-88fccd2c3c4e)
+2026-06-18 20:15:23,785 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/757b0ab9-c49f-417d-89ff-88fccd2c3c4e)
+2026-06-18 20:15:54,317 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/757b0ab9-c49f-417d-89ff-88fccd2c3c4e)
+2026-06-18 20:16:25,068 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/757b0ab9-c49f-417d-89ff-88fccd2c3c4e)
+2026-06-18 20:16:55,735 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/757b0ab9-c49f-417d-89ff-88fccd2c3c4e)
+2026-06-18 20:17:26,385 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/757b0ab9-c49f-417d-89ff-88fccd2c3c4e)
+2026-06-18 20:17:57,061 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/757b0ab9-c49f-417d-89ff-88fccd2c3c4e)
+2026-06-18 20:18:27,744 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/757b0ab9-c49f-417d-89ff-88fccd2c3c4e)
+2026-06-18 20:18:58,412 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/757b0ab9-c49f-417d-89ff-88fccd2c3c4e)
+2026-06-18 20:19:29,047 | INFO | Order state: success (https://api.planet.com/compute/ops/orders/v2/757b0ab9-c49f-417d-89ff-88fccd2c3c4e)
+2026-06-18 20:19:29,333 | WARNING | Connection pool is full, discarding connection: api.planet.com. Connection pool size: 10
+2026-06-18 20:19:29,401 | WARNING | Connection pool is full, discarding connection: api.planet.com. Connection pool size: 10
+2026-06-18 20:19:43,773 | WARNING | Connection pool is full, discarding connection: link.planet.com. Connection pool size: 10
+2026-06-18 20:19:44,002 | WARNING | Connection pool is full, discarding connection: link.planet.com. Connection pool size: 10
+2026-06-18 20:19:44,936 | INFO | Downloaded 281/281 files -> C:/Users/reub0539/work/Planet_LSP/data/wytham_test\wytham\downloaded\2023\chunk_1
+2026-06-18 20:19:45,047 | INFO | Deleted temp download dir: C:/Users/reub0539/work/Planet_LSP/data/wytham_test\wytham\downloaded\2023\chunk_1
+2026-06-18 20:19:45,048 | INFO |   wytham | year 2024: 73 scenes -> 1 chunk(s)
+2026-06-18 20:19:47,104 | INFO | Order submitted: https://api.planet.com/compute/ops/orders/v2/13bdc43c-af01-4571-9ef8-a1ab81a74711
+2026-06-18 20:19:47,317 | INFO | Order state: queued (https://api.planet.com/compute/ops/orders/v2/13bdc43c-af01-4571-9ef8-a1ab81a74711)
+2026-06-18 20:20:17,522 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/13bdc43c-af01-4571-9ef8-a1ab81a74711)
+2026-06-18 20:20:47,724 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/13bdc43c-af01-4571-9ef8-a1ab81a74711)
+2026-06-18 20:21:17,943 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/13bdc43c-af01-4571-9ef8-a1ab81a74711)
+2026-06-18 20:21:48,525 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/13bdc43c-af01-4571-9ef8-a1ab81a74711)
+2026-06-18 20:22:18,737 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/13bdc43c-af01-4571-9ef8-a1ab81a74711)
+2026-06-18 20:22:49,126 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/13bdc43c-af01-4571-9ef8-a1ab81a74711)
+2026-06-18 20:23:19,362 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/13bdc43c-af01-4571-9ef8-a1ab81a74711)
+2026-06-18 20:23:49,555 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/13bdc43c-af01-4571-9ef8-a1ab81a74711)
+2026-06-18 20:24:19,772 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/13bdc43c-af01-4571-9ef8-a1ab81a74711)
+2026-06-18 20:24:50,010 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/13bdc43c-af01-4571-9ef8-a1ab81a74711)
+2026-06-18 20:25:20,240 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/13bdc43c-af01-4571-9ef8-a1ab81a74711)
+2026-06-18 20:25:50,452 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/13bdc43c-af01-4571-9ef8-a1ab81a74711)
+2026-06-18 20:26:20,648 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/13bdc43c-af01-4571-9ef8-a1ab81a74711)
+2026-06-18 20:26:50,867 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/13bdc43c-af01-4571-9ef8-a1ab81a74711)
+2026-06-18 20:27:21,075 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/13bdc43c-af01-4571-9ef8-a1ab81a74711)
+2026-06-18 20:27:51,267 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/13bdc43c-af01-4571-9ef8-a1ab81a74711)
+2026-06-18 20:28:21,479 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/13bdc43c-af01-4571-9ef8-a1ab81a74711)
+2026-06-18 20:28:51,684 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/13bdc43c-af01-4571-9ef8-a1ab81a74711)
+2026-06-18 20:29:21,886 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/13bdc43c-af01-4571-9ef8-a1ab81a74711)
+2026-06-18 20:29:52,083 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/13bdc43c-af01-4571-9ef8-a1ab81a74711)
+2026-06-18 20:30:22,302 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/13bdc43c-af01-4571-9ef8-a1ab81a74711)
+2026-06-18 20:30:52,500 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/13bdc43c-af01-4571-9ef8-a1ab81a74711)
+2026-06-18 20:31:22,717 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/13bdc43c-af01-4571-9ef8-a1ab81a74711)
+2026-06-18 20:31:52,908 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/13bdc43c-af01-4571-9ef8-a1ab81a74711)
+2026-06-18 20:32:23,111 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/13bdc43c-af01-4571-9ef8-a1ab81a74711)
+2026-06-18 20:32:53,318 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/13bdc43c-af01-4571-9ef8-a1ab81a74711)
+2026-06-18 20:33:23,516 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/13bdc43c-af01-4571-9ef8-a1ab81a74711)
+2026-06-18 20:33:53,760 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/13bdc43c-af01-4571-9ef8-a1ab81a74711)
+2026-06-18 20:34:23,969 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/13bdc43c-af01-4571-9ef8-a1ab81a74711)
+2026-06-18 20:34:54,185 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/13bdc43c-af01-4571-9ef8-a1ab81a74711)
+2026-06-18 20:35:24,421 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/13bdc43c-af01-4571-9ef8-a1ab81a74711)
+2026-06-18 20:35:54,632 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/13bdc43c-af01-4571-9ef8-a1ab81a74711)
+2026-06-18 20:36:24,837 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/13bdc43c-af01-4571-9ef8-a1ab81a74711)
+2026-06-18 20:36:55,439 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/13bdc43c-af01-4571-9ef8-a1ab81a74711)
+2026-06-18 20:37:25,635 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/13bdc43c-af01-4571-9ef8-a1ab81a74711)
+2026-06-18 20:37:55,850 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/13bdc43c-af01-4571-9ef8-a1ab81a74711)
+2026-06-18 20:38:26,047 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/13bdc43c-af01-4571-9ef8-a1ab81a74711)
+2026-06-18 20:38:56,239 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/13bdc43c-af01-4571-9ef8-a1ab81a74711)
+2026-06-18 20:39:26,452 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/13bdc43c-af01-4571-9ef8-a1ab81a74711)
+2026-06-18 20:39:56,707 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/13bdc43c-af01-4571-9ef8-a1ab81a74711)
+2026-06-18 20:40:26,961 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/13bdc43c-af01-4571-9ef8-a1ab81a74711)
+2026-06-18 20:40:57,471 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/13bdc43c-af01-4571-9ef8-a1ab81a74711)
+2026-06-18 20:41:28,082 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/13bdc43c-af01-4571-9ef8-a1ab81a74711)
+2026-06-18 20:41:58,726 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/13bdc43c-af01-4571-9ef8-a1ab81a74711)
+2026-06-18 20:42:29,450 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/13bdc43c-af01-4571-9ef8-a1ab81a74711)
+2026-06-18 20:43:00,211 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/13bdc43c-af01-4571-9ef8-a1ab81a74711)
+2026-06-18 20:43:30,932 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/13bdc43c-af01-4571-9ef8-a1ab81a74711)
+2026-06-18 20:44:01,571 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/13bdc43c-af01-4571-9ef8-a1ab81a74711)
+2026-06-18 20:44:32,244 | INFO | Order state: success (https://api.planet.com/compute/ops/orders/v2/13bdc43c-af01-4571-9ef8-a1ab81a74711)
+2026-06-18 20:44:32,532 | WARNING | Connection pool is full, discarding connection: api.planet.com. Connection pool size: 10
+2026-06-18 20:44:32,664 | WARNING | Connection pool is full, discarding connection: api.planet.com. Connection pool size: 10
+2026-06-18 20:44:41,582 | WARNING | Connection pool is full, discarding connection: link.planet.com. Connection pool size: 10
+2026-06-18 20:44:47,156 | WARNING | Connection pool is full, discarding connection: link.planet.com. Connection pool size: 10
+2026-06-18 20:44:50,632 | INFO | Downloaded 293/293 files -> C:/Users/reub0539/work/Planet_LSP/data/wytham_test\wytham\downloaded\2024\chunk_1
+2026-06-18 20:44:50,749 | INFO | Deleted temp download dir: C:/Users/reub0539/work/Planet_LSP/data/wytham_test\wytham\downloaded\2024\chunk_1
+2026-06-18 20:44:50,750 | INFO |   wytham | year 2025: 109 scenes -> 1 chunk(s)
+2026-06-18 20:44:52,344 | INFO | Order submitted: https://api.planet.com/compute/ops/orders/v2/54dab5af-816b-4fe0-bc60-413c0721ddf5
+2026-06-18 20:44:52,573 | INFO | Order state: queued (https://api.planet.com/compute/ops/orders/v2/54dab5af-816b-4fe0-bc60-413c0721ddf5)
+2026-06-18 20:45:22,770 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/54dab5af-816b-4fe0-bc60-413c0721ddf5)
+2026-06-18 20:45:52,963 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/54dab5af-816b-4fe0-bc60-413c0721ddf5)
+2026-06-18 20:46:23,144 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/54dab5af-816b-4fe0-bc60-413c0721ddf5)
+2026-06-18 20:46:53,340 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/54dab5af-816b-4fe0-bc60-413c0721ddf5)
+2026-06-18 20:47:23,550 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/54dab5af-816b-4fe0-bc60-413c0721ddf5)
+2026-06-18 20:47:53,766 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/54dab5af-816b-4fe0-bc60-413c0721ddf5)
+2026-06-18 20:48:24,032 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/54dab5af-816b-4fe0-bc60-413c0721ddf5)
+2026-06-18 20:48:54,246 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/54dab5af-816b-4fe0-bc60-413c0721ddf5)
+2026-06-18 20:49:25,096 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/54dab5af-816b-4fe0-bc60-413c0721ddf5)
+2026-06-18 20:49:55,402 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/54dab5af-816b-4fe0-bc60-413c0721ddf5)
+2026-06-18 20:50:25,592 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/54dab5af-816b-4fe0-bc60-413c0721ddf5)
+2026-06-18 20:50:56,109 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/54dab5af-816b-4fe0-bc60-413c0721ddf5)
+2026-06-18 20:51:26,545 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/54dab5af-816b-4fe0-bc60-413c0721ddf5)
+2026-06-18 20:51:56,734 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/54dab5af-816b-4fe0-bc60-413c0721ddf5)
+2026-06-18 20:52:26,920 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/54dab5af-816b-4fe0-bc60-413c0721ddf5)
+2026-06-18 20:52:57,124 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/54dab5af-816b-4fe0-bc60-413c0721ddf5)
+2026-06-18 20:53:27,623 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/54dab5af-816b-4fe0-bc60-413c0721ddf5)
+2026-06-18 20:53:57,840 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/54dab5af-816b-4fe0-bc60-413c0721ddf5)
+2026-06-18 20:54:28,058 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/54dab5af-816b-4fe0-bc60-413c0721ddf5)
+2026-06-18 20:54:58,282 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/54dab5af-816b-4fe0-bc60-413c0721ddf5)
+2026-06-18 20:55:28,498 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/54dab5af-816b-4fe0-bc60-413c0721ddf5)
+2026-06-18 20:55:58,706 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/54dab5af-816b-4fe0-bc60-413c0721ddf5)
+2026-06-18 20:56:28,918 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/54dab5af-816b-4fe0-bc60-413c0721ddf5)
+2026-06-18 20:56:59,174 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/54dab5af-816b-4fe0-bc60-413c0721ddf5)
+2026-06-18 20:57:29,364 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/54dab5af-816b-4fe0-bc60-413c0721ddf5)
+2026-06-18 20:57:59,560 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/54dab5af-816b-4fe0-bc60-413c0721ddf5)
+2026-06-18 20:58:29,772 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/54dab5af-816b-4fe0-bc60-413c0721ddf5)
+2026-06-18 20:58:59,968 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/54dab5af-816b-4fe0-bc60-413c0721ddf5)
+2026-06-18 20:59:30,180 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/54dab5af-816b-4fe0-bc60-413c0721ddf5)
+2026-06-18 21:00:00,413 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/54dab5af-816b-4fe0-bc60-413c0721ddf5)
+2026-06-18 21:00:30,626 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/54dab5af-816b-4fe0-bc60-413c0721ddf5)
+2026-06-18 21:01:00,845 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/54dab5af-816b-4fe0-bc60-413c0721ddf5)
+2026-06-18 21:01:31,041 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/54dab5af-816b-4fe0-bc60-413c0721ddf5)
+2026-06-18 21:02:01,291 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/54dab5af-816b-4fe0-bc60-413c0721ddf5)
+2026-06-18 21:02:31,493 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/54dab5af-816b-4fe0-bc60-413c0721ddf5)
+2026-06-18 21:03:02,224 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/54dab5af-816b-4fe0-bc60-413c0721ddf5)
+2026-06-18 21:03:32,966 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/54dab5af-816b-4fe0-bc60-413c0721ddf5)
+2026-06-18 21:04:03,819 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/54dab5af-816b-4fe0-bc60-413c0721ddf5)
+2026-06-18 21:04:34,632 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/54dab5af-816b-4fe0-bc60-413c0721ddf5)
+2026-06-18 21:05:05,532 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/54dab5af-816b-4fe0-bc60-413c0721ddf5)
+2026-06-18 21:05:36,487 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/54dab5af-816b-4fe0-bc60-413c0721ddf5)
+2026-06-18 21:06:07,348 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/54dab5af-816b-4fe0-bc60-413c0721ddf5)
+2026-06-18 21:06:38,243 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/54dab5af-816b-4fe0-bc60-413c0721ddf5)
+2026-06-18 21:07:09,219 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/54dab5af-816b-4fe0-bc60-413c0721ddf5)
+2026-06-18 21:07:40,251 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/54dab5af-816b-4fe0-bc60-413c0721ddf5)
+2026-06-18 21:08:11,101 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/54dab5af-816b-4fe0-bc60-413c0721ddf5)
+2026-06-18 21:08:41,970 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/54dab5af-816b-4fe0-bc60-413c0721ddf5)
+2026-06-18 21:09:13,134 | INFO | Order state: running (https://api.planet.com/compute/ops/orders/v2/54dab5af-816b-4fe0-bc60-413c0721ddf5)
+2026-06-18 21:09:44,109 | INFO | Order state: success (https://api.planet.com/compute/ops/orders/v2/54dab5af-816b-4fe0-bc60-413c0721ddf5)
+2026-06-18 21:09:44,431 | WARNING | Connection pool is full, discarding connection: api.planet.com. Connection pool size: 10
+2026-06-18 21:09:44,479 | WARNING | Connection pool is full, discarding connection: api.planet.com. Connection pool size: 10
+2026-06-18 21:10:05,131 | WARNING | Connection pool is full, discarding connection: link.planet.com. Connection pool size: 10
+2026-06-18 21:10:05,442 | WARNING | Connection pool is full, discarding connection: link.planet.com. Connection pool size: 10
+2026-06-18 21:10:12,174 | INFO | Downloaded 437/437 files -> C:/Users/reub0539/work/Planet_LSP/data/wytham_test\wytham\downloaded\2025\chunk_1
+2026-06-18 21:10:12,348 | INFO | Deleted temp download dir: C:/Users/reub0539/work/Planet_LSP/data/wytham_test\wytham\downloaded\2025\chunk_1
+2026-06-18 21:10:12,382 | INFO | All phases complete
