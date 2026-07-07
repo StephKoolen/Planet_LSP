@@ -10,6 +10,8 @@
 *.xml
 *.json
 
-#Inore all the recovered dowlonaded files
+#Ignore all the recovered downloaded files as well as NFI files as they are too big
 data/recovered_downloads
+data/NFI
+
 
